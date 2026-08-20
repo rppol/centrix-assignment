@@ -114,8 +114,9 @@ figcaption{font-size:14px;line-height:1.45;color:#4A463B;margin-top:10px;padding
 figcaption b{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
   color:#93312B;font-weight:700;margin-right:7px}
 figcaption code{background:#E9E4D8;color:#191712}
-figure.pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:0 18px}
-figure.pair>figcaption{grid-column:1/-1}
+/* A "pair" is two diagrams under one caption, stacked. Side-by-side squeezed the
+   wide LR charts into unreadable slivers — width is what makes them legible. */
+figure.pair>.mermaid+.mermaid{margin-top:14px;padding-top:12px;border-top:1px solid #E1DBCC}
 
 .note{border-left:2px solid var(--spot);padding:2px 0 2px 16px;margin:0 0 1.2em;max-width:var(--col)}
 .note.hold{border-left-color:var(--caution)}
@@ -167,7 +168,7 @@ footer div{max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:6px 22
 @media print{
   :root{--bg:#FFF;--panel:#FFF;--fg:#191712;--fg-soft:#3D3930;--muted:#6E6858;
     --line:#B8B1A0;--line-2:#DBD5C6}
-  body{font-size:7.8pt;line-height:1.34}
+  body{font-size:7.6pt;line-height:1.32}
   .masthead{padding:0 0 6px;border-bottom-width:2px}
   .wordmark{font-size:17pt} .dateline{font-size:6.6pt;margin:6px 0 2px}
   .standfirst{font-size:9.2pt;margin:5px 0 9px}
@@ -188,12 +189,14 @@ footer div{max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:6px 22
   ul.pts>li{padding-left:12px;margin-bottom:.28em} ul.pts>li::before{width:6px;top:.58em}
   table{font-size:6.7pt;line-height:1.28} thead th{padding:2.8px 5px;font-size:5.9pt}
   tbody td{padding:3.2px 5px} .tbl{margin-bottom:.7em}
-  figure{margin:.6em 0 .75em;padding:6px 6px 5px}
-  /* auto-fit collapses to one column at print widths, which doubles the height of
-     every paired figure. Pin two columns and cap the tallest single diagrams. */
-  figure.pair{grid-template-columns:1fr 1fr;gap:0 12px}
-  figure .mermaid svg{max-height:210px}
-  figure.tall .mermaid svg{max-height:300px}
+  figure{margin:.5em 0 .6em;padding:5px 5px 4px}
+  /* Diagrams print at full page width, one per row, uncapped. Legibility beats
+     page count here — a squeezed flowchart is a diagram nobody reads. */
+  figure.pair{grid-template-columns:1fr}
+  figure.pair>.mermaid+.mermaid{margin-top:8px;padding-top:7px;border-top:1px solid var(--line-2)}
+  /* Only the two tallest figures are capped, and generously — this is the one
+     page between the document and the 20-page ceiling. */
+  figure.tall .mermaid svg{max-height:430px}
   figcaption{font-size:6.7pt;margin-top:6px;padding-top:4px} figcaption b{font-size:5.9pt}
   .note{margin-bottom:.65em;padding-left:10px} .note .kicker{font-size:6.2pt;margin-bottom:2px}
   .decision{padding-top:6px} .decision h5{font-size:9pt}
@@ -352,7 +355,7 @@ flowchart LR
 
   <figure class="pair">
     <pre class="mermaid">
-flowchart TB
+flowchart LR
   IN(["Document"]) --> T{"Format"}
   T -- "JATS / NLM XML" --> X(["Parse directly<br/>structure is free"])
   T -- HTML --> H(["Readability extract<br/>rebuild heading tree"])
@@ -372,7 +375,7 @@ flowchart TB
   class T,TB,Q c
     </pre>
     <pre class="mermaid">
-flowchart TB
+flowchart LR
   D(["Document<br/>work_id"])
   V25(["Version 2025<br/>superseded<br/>valid_to 2027-03"])
   V27(["Version 2027<br/>current<br/>valid_from 2027-03"])
@@ -431,7 +434,7 @@ flowchart TB
 
   <figure class="pair">
     <pre class="mermaid">
-flowchart TB
+flowchart LR
   C(["Retrieval need"])
   C --> N(["Duplicate detection<br/>MinHash + LSH"])
   C --> E(["Drug / condition<br/>RxNorm alias table"])
@@ -497,9 +500,9 @@ xychart-beta
 
   <figure class="pair">
     <pre class="mermaid">
-flowchart TB
+flowchart LR
   subgraph WF["Workflow — fixed steps, traced, no planner"]
-    direction TB
+    direction LR
     U(["Understand<br/>→ ontology codes"]) --> P(["Plan<br/>fixed taxonomy, max 6"])
     P --> H(["Retrieve + rerank<br/>parallel per sub-query"])
     H --> A(["Assemble<br/>passage IDs attached"])
@@ -537,7 +540,7 @@ stateDiagram-v2
   Contradicted --> [*]
   Unresolved --> [*]
     </pre>
-    <figcaption><b>Figures 7 &amp; 8</b> Everything in the left box is a function call — modelling it as graph nodes buys one uniform tracing surface, not a state machine. Only the right box gets checkpointing and budgets, and it has <strong>three terminal states with <code>Unresolved</code> first-class</strong>: an agent that cannot finish returns partial evidence and lowers confidence. It never loops, and it never adjudicates by asking a second model to agree.</figcaption>
+    <figcaption><b>Figures 7 &amp; 8</b> Every step in the workflow band is a function call — modelling it as graph nodes buys one uniform tracing surface, not a state machine. Only the agent box gets checkpointing and budgets, and it has <strong>three terminal states with <code>Unresolved</code> first-class</strong>: an agent that cannot finish returns partial evidence and lowers confidence. It never loops, and it never adjudicates by asking a second model to agree.</figcaption>
   </figure>
 
   <ul class="pts">
@@ -664,7 +667,7 @@ p_7744 span 1200:1310 asserts "40"    ✗ not in span
 
   <figure class="pair">
     <pre class="mermaid">
-flowchart TB
+flowchart LR
   M(["Statement<br/>+ passage IDs"]) --> A{"IDs in the<br/>closed set"}
   A -- no --> R(["Reject"])
   A -- yes --> B{"Carries a<br/>number"}
@@ -686,7 +689,7 @@ flowchart TB
   class R,GS a
     </pre>
     <pre class="mermaid">
-flowchart TB
+flowchart LR
   DOC[("document")] --> VER[("document_version<br/>status · valid_from")]
   VER --> SEC[("section<br/>page_no · char_span")]
   SEC --> CHK[("chunk<br/>text · embedding")]
@@ -831,7 +834,7 @@ pie showData
   "Embedding delta" : 2
     </pre>
     <pre class="mermaid">
-flowchart TB
+flowchart LR
   Q(["Query"]) --> R{"Stage"}
   R -- "understand · plan · validate" --> S(["Small hosted model<br/>unbatched, latency matters"])
   R -- "answer generation" --> F(["Frontier hosted<br/>streamed"])
