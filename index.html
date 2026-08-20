@@ -16,8 +16,7 @@
    A clinical guideline is a printed monograph before it is an API response: an
    issuing body, a recommendation class, an evidence level, and a page you can
    cite. Reading surface is stock; the dark surface is the same document on
-   darker paper. Numbers are mono with tabular figures.
-   Sibling to rppol/trading-agent — same bones, cooler stock, madder spot. */
+   darker paper. Sibling to rppol/trading-agent. */
 
 :root {
   --stock:#F4F1E9; --panel:#FBF9F4; --ink:#191712; --ink-soft:#4A463B;
@@ -27,25 +26,21 @@
   --line:var(--rule); --line-2:var(--rule-soft);
   --serif:"Newsreader","Iowan Old Style",Georgia,serif;
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
-  --col:72ch;
+  --col:70ch;
 }
-[data-surface="ink"] {
-  --bg:#14130F; --fg:#EDE8DA; --fg-soft:#B2AC9B; --muted:#8B8574;
-  --line:#3A352B; --line-2:#28241D; --panel:#1B1914;
-  --spot:#D9776D; --current:#6FBF9E; --caution:#D9A733;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-surface="paper"]) {
-    --bg:#14130F; --fg:#EDE8DA; --fg-soft:#B2AC9B; --muted:#8B8574;
-    --line:#3A352B; --line-2:#28241D; --panel:#1B1914;
-    --spot:#D9776D; --current:#6FBF9E; --caution:#D9A733;
-  }
+[data-surface="ink"]{--bg:#14130F;--fg:#EDE8DA;--fg-soft:#B2AC9B;--muted:#8B8574;
+  --line:#3A352B;--line-2:#28241D;--panel:#1B1914;
+  --spot:#D9776D;--current:#6FBF9E;--caution:#D9A733}
+@media (prefers-color-scheme: dark){
+  :root:not([data-surface="paper"]){--bg:#14130F;--fg:#EDE8DA;--fg-soft:#B2AC9B;--muted:#8B8574;
+  --line:#3A352B;--line-2:#28241D;--panel:#1B1914;
+  --spot:#D9776D;--current:#6FBF9E;--caution:#D9A733}
 }
 
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--serif);
-  font-size:18px;line-height:1.6;font-variant-numeric:oldstyle-nums}
+  font-size:18px;line-height:1.55;font-variant-numeric:oldstyle-nums}
 
 .masthead{border-bottom:3px double var(--line);padding:30px 20px 0}
 .masthead-inner{max-width:1180px;margin:0 auto}
@@ -55,46 +50,54 @@ body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--serif);
 .dateline{display:flex;flex-wrap:wrap;gap:8px 22px;font-family:var(--mono);font-size:11px;
   letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:14px 0 4px}
 .dateline b{color:var(--fg);font-weight:700}
-.standfirst{font-size:clamp(17px,2.1vw,20px);max-width:64ch;margin:10px 0 24px;
+.standfirst{font-size:clamp(16px,2vw,19px);max-width:66ch;margin:10px 0 22px;
   color:var(--fg-soft);font-style:italic}
 
 .theses{display:grid;gap:1px;background:var(--line);
-  grid-template-columns:repeat(auto-fit,minmax(256px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
   border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.thesis{background:var(--panel);padding:20px 22px 22px}
-.thesis .kicker{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;
-  text-transform:uppercase;color:var(--spot);margin-bottom:8px}
-.thesis p{margin:0;font-size:16px;color:var(--fg-soft)}
+.thesis{background:var(--panel);padding:18px 20px 20px}
+.thesis .kicker{font-family:var(--mono);font-size:10px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--spot);margin-bottom:7px}
+.thesis p{margin:0;font-size:15.5px;color:var(--fg-soft)}
 .thesis b{color:var(--fg);font-weight:600}
 
 main{max-width:1180px;margin:0 auto;padding:0 20px 90px}
-.monograph{border-top:1px solid var(--line);padding:30px 0 6px;display:grid;
+.monograph{border-top:1px solid var(--line);padding:28px 0 6px;display:grid;
   grid-template-columns:1fr min(var(--col),100%) 1fr}
 .monograph>*{grid-column:2;min-width:0}
-.monograph>:is(table,figure,.tbl){grid-column:1/-1;justify-self:center;
+.monograph>:is(table,figure,.tbl,.wide){grid-column:1/-1;justify-self:center;
   width:min(1120px,100%);max-width:100%}
-.entry{grid-column:1/-1;margin-bottom:18px}
+.entry{grid-column:1/-1;margin-bottom:16px}
 .entry .no{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;
-  color:var(--spot);display:block;margin-bottom:7px}
-.entry h2{font-size:clamp(23px,3.1vw,31px);line-height:1.16;font-weight:600;
-  letter-spacing:-.012em;margin:0 0 8px;max-width:26ch;text-wrap:balance}
-.entry .lede{font-size:18px;font-style:italic;color:var(--fg-soft);margin:0;max-width:70ch}
+  color:var(--spot);display:block;margin-bottom:6px}
+.entry h2{font-size:clamp(22px,3vw,30px);line-height:1.14;font-weight:600;
+  letter-spacing:-.012em;margin:0 0 7px;max-width:26ch;text-wrap:balance}
+.entry .lede{font-size:17px;font-style:italic;color:var(--fg-soft);margin:0;max-width:72ch}
 
-p{margin:0 0 1em}
-ul,ol{margin:0 0 1em;padding-left:1.25em}
-.monograph li{margin-bottom:.35em}
+p{margin:0 0 .85em}
+ul,ol{margin:0 0 .9em;padding-left:1.2em}
+.monograph li{margin-bottom:.3em}
 li::marker{color:var(--muted)}
-h4{font-family:var(--mono);font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;
-  color:var(--muted);margin:1.9em 0 .55em;font-weight:400}
+h4{font-family:var(--mono);font-size:11px;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--muted);margin:1.5em 0 .5em;font-weight:400}
 a{color:var(--spot);text-underline-offset:3px}
-code{font-family:var(--mono);font-size:.84em;background:var(--line-2);padding:1px 5px}
+code{font-family:var(--mono);font-size:.83em;background:var(--line-2);padding:1px 5px}
 
-.tbl{overflow-x:auto;margin:0 0 1.5em}
-table{border-collapse:collapse;width:100%;font-size:15px;line-height:1.42}
-thead th{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--muted);text-align:left;padding:8px 12px;border-bottom:2px solid var(--line);
+/* Point lists: a bold claim, then the mechanism. Denser than prose, still readable. */
+ul.pts{list-style:none;padding:0;margin:0 0 1em}
+ul.pts>li{padding-left:16px;position:relative;margin-bottom:.5em}
+ul.pts>li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:1px;
+  background:var(--spot)}
+ul.pts>li>b{font-weight:600;color:var(--fg)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 30px}
+
+.tbl{overflow-x:auto;margin:0 0 1.3em}
+table{border-collapse:collapse;width:100%;font-size:14.5px;line-height:1.4}
+thead th{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);text-align:left;padding:7px 11px;border-bottom:2px solid var(--line);
   white-space:nowrap}
-tbody td{padding:9px 12px;border-bottom:1px solid var(--line-2);vertical-align:top;color:var(--fg-soft)}
+tbody td{padding:8px 11px;border-bottom:1px solid var(--line-2);vertical-align:top;color:var(--fg-soft)}
 tbody td:first-child{color:var(--fg)}
 tbody tr:last-child td{border-bottom:1px solid var(--line)}
 td.num,th.num{font-family:var(--mono);font-variant-numeric:tabular-nums lining-nums;
@@ -103,43 +106,58 @@ td code{background:none;padding:0}
 
 /* Mermaid renders once, in one theme. Pinning plates to stock makes that a
    deliberate choice — a printed insert — not an unreadable diagram on ink. */
-figure{margin:1.3em 0 1.6em;background:#FBF9F4;border:1px solid #CBC4B2;padding:16px 16px 12px}
+figure{margin:1.1em 0 1.4em;background:#FBF9F4;border:1px solid #CBC4B2;padding:14px 14px 10px}
 figure .mermaid{overflow-x:auto;text-align:center}
 figure .mermaid svg{max-width:100%;height:auto}
-figcaption{font-size:14.5px;line-height:1.5;color:#4A463B;margin-top:12px;padding-top:10px;
-  border-top:1px solid #E1DBCC;max-width:78ch}
-figcaption b{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+figcaption{font-size:14px;line-height:1.45;color:#4A463B;margin-top:10px;padding-top:9px;
+  border-top:1px solid #E1DBCC;max-width:80ch}
+figcaption b{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
   color:#93312B;font-weight:700;margin-right:7px}
 figcaption code{background:#E9E4D8;color:#191712}
+figure.pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:0 18px}
+figure.pair>figcaption{grid-column:1/-1}
 
-.note{border-left:2px solid var(--spot);padding:2px 0 2px 18px;margin:0 0 1.4em;max-width:var(--col)}
+.note{border-left:2px solid var(--spot);padding:2px 0 2px 16px;margin:0 0 1.2em;max-width:var(--col)}
 .note.hold{border-left-color:var(--caution)}
-.note .kicker{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--spot);margin-bottom:5px}
+.note.wide{max-width:none}
+.note .kicker{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--spot);margin-bottom:4px}
 .note.hold .kicker{color:var(--caution)}
-.note p:last-child{margin-bottom:0}
+.note p:last-child,.note ul:last-child{margin-bottom:0}
 
-.decision{border-top:1px solid var(--line-2);padding:14px 0 2px}
-.decision h5{font-size:19px;font-weight:600;margin:0 0 .45em}
-.decision .pick{font-size:16px;border-left:2px solid var(--current);padding:2px 0 2px 16px;
-  margin:.7em 0 0;color:var(--fg)}
-.decision .pick b{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--current);display:block;margin-bottom:4px;font-weight:700}
+.decision{border-top:1px solid var(--line-2);padding:12px 0 2px}
+.decision h5{font-size:18px;font-weight:600;margin:0 0 .4em}
+.decision .pick{font-size:15.5px;border-left:2px solid var(--current);padding:2px 0 2px 15px;
+  margin:.6em 0 0;color:var(--fg)}
+.decision .pick b{font-family:var(--mono);font-size:10px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--current);display:block;margin-bottom:3px;font-weight:700}
 
-.grade{display:inline-block;white-space:nowrap;font-family:var(--mono);font-size:11px;
-  font-weight:700;letter-spacing:.08em;padding:2px 8px;margin-right:9px;border:1px solid currentColor}
+.grade{display:inline-block;white-space:nowrap;font-family:var(--mono);font-size:10.5px;
+  font-weight:700;letter-spacing:.08em;padding:2px 7px;margin-right:8px;border:1px solid currentColor}
 .grade.a{color:var(--current)} .grade.b{color:var(--caution)} .grade.c{color:var(--muted)}
-.bucket{margin:0 0 1.3em}
-.bucket h5{font-family:var(--mono);font-size:12px;letter-spacing:.07em;text-transform:uppercase;
-  font-weight:400;color:var(--muted);margin:0 0 .45em}
-.bucket p{margin:0}
+.bucket{margin:0 0 1.1em}
+.bucket h5{font-family:var(--mono);font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;
+  font-weight:400;color:var(--muted);margin:0 0 .4em}
+.bucket p{margin:0;font-size:16px}
 
-ol.risks{list-style:none;padding:0;margin:0 0 1.4em}
-ol.risks li{border-left:2px solid var(--caution);padding:3px 0 3px 16px;margin-bottom:.85em}
-ol.risks b{font-family:var(--mono);font-size:12px;letter-spacing:.05em;text-transform:uppercase;
+ol.risks{list-style:none;padding:0;margin:0 0 1.2em}
+ol.risks li{border-left:2px solid var(--caution);padding:3px 0 3px 15px;margin-bottom:.7em}
+ol.risks b{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;
   display:block;color:var(--fg);margin-bottom:2px}
 
-footer{border-top:3px double var(--line);margin-top:46px;padding:20px;
+/* Case-study trace: numbered stages with the actual payload at each hop. */
+.trace{list-style:none;counter-reset:t;padding:0;margin:0 0 1.2em}
+.trace>li{counter-increment:t;position:relative;padding-left:34px;margin-bottom:.85em}
+.trace>li::before{content:counter(t);position:absolute;left:0;top:1px;width:21px;height:21px;
+  font-family:var(--mono);font-size:11px;font-weight:700;line-height:21px;text-align:center;
+  border:1px solid var(--spot);color:var(--spot)}
+.trace>li>b{display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--fg);margin-bottom:2px}
+pre.pay{font-family:var(--mono);font-size:12px;line-height:1.5;background:var(--panel);
+  border:1px solid var(--line-2);padding:9px 12px;overflow-x:auto;margin:.4em 0 0;
+  font-variant-numeric:tabular-nums;white-space:pre}
+
+footer{border-top:3px double var(--line);margin-top:44px;padding:20px;
   font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 footer div{max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:6px 22px}
 
@@ -149,34 +167,47 @@ footer div{max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:6px 22
 @media print{
   :root{--bg:#FFF;--panel:#FFF;--fg:#191712;--fg-soft:#3D3930;--muted:#6E6858;
     --line:#B8B1A0;--line-2:#DBD5C6}
-  body{font-size:7.9pt;line-height:1.36}
-  .masthead{padding:0 0 7px;border-bottom-width:2px}
-  .wordmark{font-size:18pt} .dateline{font-size:6.8pt;margin:7px 0 2px}
-  .standfirst{font-size:9.6pt;margin:5px 0 10px}
-  .theses{gap:0;background:none} .thesis{padding:8px 11px 9px;border-left:1px solid var(--line-2)}
+  body{font-size:7.8pt;line-height:1.34}
+  .masthead{padding:0 0 6px;border-bottom-width:2px}
+  .wordmark{font-size:17pt} .dateline{font-size:6.6pt;margin:6px 0 2px}
+  .standfirst{font-size:9.2pt;margin:5px 0 9px}
+  .theses{gap:0;background:none} .thesis{padding:7px 10px 8px;border-left:1px solid var(--line-2)}
   .thesis:first-child{border-left:0;padding-left:0}
-  .thesis p{font-size:7.5pt} .thesis .kicker{font-size:6.4pt;margin-bottom:4px}
+  .thesis p{font-size:7.3pt} .thesis .kicker{font-size:6.2pt;margin-bottom:3px}
   main{padding:0;max-width:none}
   /* A masthead sits above the first story; it does not own a page. */
   .monograph{break-before:page;border-top:0;padding:0;
-    grid-template-columns:1fr min(100ch,100%) 1fr}
-  .monograph:first-of-type{break-before:auto;padding-top:10px}
-  .entry{margin-bottom:8px;border-bottom:1px solid var(--line);padding-bottom:6px}
-  .entry .no{font-size:6.8pt;margin-bottom:3px}
-  .entry h2{font-size:14pt;margin-bottom:3px;max-width:none}
-  .entry .lede{font-size:8.4pt}
-  p{margin-bottom:.55em} h4{font-size:7.2pt;margin:1em 0 .28em}
-  ul,ol{margin-bottom:.55em;padding-left:1.1em} .monograph li{margin-bottom:.14em}
-  table{font-size:6.9pt;line-height:1.3} thead th{padding:3px 5px;font-size:6.1pt}
-  tbody td{padding:3.4px 5px} .tbl{margin-bottom:.8em}
-  figure{margin:.65em 0 .8em;padding:7px 7px 5px}
-  figcaption{font-size:6.9pt;margin-top:6px;padding-top:5px} figcaption b{font-size:6.1pt}
-  .note{margin-bottom:.7em;padding-left:11px} .note .kicker{font-size:6.4pt;margin-bottom:2px}
-  .decision{padding-top:7px} .decision h5{font-size:9.4pt}
-  .decision .pick{font-size:7.8pt;padding-left:10px}
-  .bucket{margin-bottom:.65em} ol.risks li{margin-bottom:.45em;padding-left:10px}
-  figure,table,.decision,.note,ol.risks li,.bucket{break-inside:avoid}
-  footer{break-before:avoid;margin-top:12px;padding:7px 0 0;font-size:6.5pt}
+    grid-template-columns:1fr min(104ch,100%) 1fr}
+  .monograph:first-of-type{break-before:auto;padding-top:9px}
+  .entry{margin-bottom:7px;border-bottom:1px solid var(--line);padding-bottom:5px}
+  .entry .no{font-size:6.6pt;margin-bottom:3px}
+  .entry h2{font-size:13.5pt;margin-bottom:3px;max-width:none}
+  .entry .lede{font-size:8.2pt}
+  p{margin-bottom:.5em} h4{font-size:7pt;margin:.9em 0 .25em}
+  ul,ol{margin-bottom:.5em;padding-left:1.05em} .monograph li{margin-bottom:.12em}
+  ul.pts>li{padding-left:12px;margin-bottom:.28em} ul.pts>li::before{width:6px;top:.58em}
+  table{font-size:6.7pt;line-height:1.28} thead th{padding:2.8px 5px;font-size:5.9pt}
+  tbody td{padding:3.2px 5px} .tbl{margin-bottom:.7em}
+  figure{margin:.6em 0 .75em;padding:6px 6px 5px}
+  /* auto-fit collapses to one column at print widths, which doubles the height of
+     every paired figure. Pin two columns and cap the tallest single diagrams. */
+  figure.pair{grid-template-columns:1fr 1fr;gap:0 12px}
+  figure .mermaid svg{max-height:210px}
+  figure.tall .mermaid svg{max-height:300px}
+  figcaption{font-size:6.7pt;margin-top:6px;padding-top:4px} figcaption b{font-size:5.9pt}
+  .note{margin-bottom:.65em;padding-left:10px} .note .kicker{font-size:6.2pt;margin-bottom:2px}
+  .decision{padding-top:6px} .decision h5{font-size:9pt}
+  .decision .pick{font-size:7.5pt;padding-left:9px}
+  .bucket{margin-bottom:.55em} .bucket p{font-size:7.5pt}
+  ol.risks li{margin-bottom:.38em;padding-left:9px}
+  .trace>li{padding-left:26px;margin-bottom:.45em}
+  .trace>li::before{width:17px;height:17px;line-height:17px;font-size:6.4pt}
+  pre.pay{font-size:6.3pt;padding:5px 7px;line-height:1.4}
+  /* Keep breaks out of things that lose meaning when split. A bucket or a risk
+     item reads fine across a break, and forcing avoid there only leaves gaps. */
+  figure,.decision,.trace>li,pre.pay{break-inside:avoid}
+  table{break-inside:auto} tbody tr{break-inside:avoid}
+  footer{break-before:avoid;margin-top:11px;padding:6px 0 0;font-size:6.3pt}
   a{color:var(--fg);text-decoration:none}
 }
 </style>
@@ -190,13 +221,12 @@ footer div{max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:6px 22
       <span>Technical assignment</span>
       <span>Senior Backend &amp; Platform Engineer</span>
       <span><b>Rutik Pol</b></span>
-      <span>Ten monographs</span>
       <span><a href="Rutik_Pol_Centrix_Assignment.pdf?v=__BUILD__">Download PDF</a></span>
     </div>
     <p class="standfirst">
-      Architecture, retrieval and evidence provenance for a physician-facing platform — and a plan
-      for taking ownership of one somebody else already built. Every number below is either derived
-      from the brief or cited; where I am guessing, it says so.
+      Architecture, retrieval and evidence provenance for a physician-facing platform, a worked
+      trace of one real query, and a plan for taking ownership of a system somebody else built.
+      Clinical examples are illustrative — the architecture is the subject.
     </p>
   </div>
 </header>
@@ -204,15 +234,15 @@ footer div{max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:6px 22
 <div class="theses">
   <div class="thesis">
     <div class="kicker">The volumes are a misdirection</div>
-    <p>20,000 queries a day is <b>0.23 QPS</b> — three warm pods. Ten million documents is <b>~300M chunks</b>, which is past every pgvector ceiling ever measured. <b>Sizing the API for the query count is the mistake the brief invites.</b></p>
+    <p>20,000 queries a day is <b>0.23 QPS</b> — three warm pods. Ten million documents is <b>~300M chunks</b>, past every measured pgvector ceiling. <b>Sizing the API for the query count is the mistake the brief invites.</b></p>
   </div>
   <div class="thesis">
     <div class="kicker">The model never writes the number</div>
-    <p>The LLM turns retrieved passages into <b>typed, cited statements</b>. A deterministic gate checks every dose and threshold appears <b>literally in its cited span</b>. Composition is code. The model is an extractor, not an oracle.</p>
+    <p>The LLM emits <b>typed, cited statements</b>. A deterministic gate checks every dose and threshold appears <b>literally in its cited span</b>. Composition is code. The model is an extractor, not an oracle.</p>
   </div>
   <div class="thesis">
     <div class="kicker">Silence is not a recommendation</div>
-    <p>"No guideline addresses this", "guidelines recommend against", and "retrieval failed" are <b>three different states</b> and must never render alike. Conflating them is the failure mode that reaches a patient.</p>
+    <p>"No guideline addresses this", "guidelines recommend against", and "retrieval failed" are <b>three different states</b> and must never render alike. Conflating them is the failure that reaches a patient.</p>
   </div>
 </div>
 
@@ -223,27 +253,27 @@ footer div{max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:6px 22
   <div class="entry">
     <span class="no">Monograph 01 &middot; Platform</span>
     <h2>End-to-End Architecture</h2>
-    <p class="lede">Read it in three moves. Left of the gate the system is reducing; at the gate it is verifying; right of the gate it is deterministic. Nothing enters the store whose evidence cannot be pointed at.</p>
+    <p class="lede">Read it in three moves: left of the gate the system is reducing, at the gate it is verifying, right of the gate it is deterministic.</p>
   </div>
 
   <figure>
     <pre class="mermaid">
 flowchart LR
-  SRC(["Sources<br/>guidelines · journals · XML<br/>+ tenant protocols"])
-  ING(["Ingest<br/>immutable snapshot<br/>two clocks from row one"])
-  PAR(["Parse + structure<br/>prose · tables · figures"])
-  GATE{"Grounding gate<br/>span + number verbatim"}
-  STORE[("Evidence store<br/>bitemporal, append-only")]
-  RET(["Hybrid retrieve<br/>filter · BM25 + dense · RRF"])
+  SRC(["Sources<br/>guidelines · journals<br/>XML · tenant protocols"])
+  ING(["Ingest<br/>immutable snapshot<br/>two clocks"])
+  PAR(["Parse<br/>prose · tables · figures"])
+  GATE{"Grounding gate<br/>span + number"}
+  REJ(["Reject<br/>→ Gold-A"])
+  STORE[("Evidence store<br/>bitemporal<br/>append-only")]
+  RET(["Retrieve<br/>filter · BM25 + dense · RRF"])
   GEN(["Generate<br/>typed cited statements"])
-  COMP(["Compose<br/>deterministic, not a model"])
-  OUT(["Physician answer<br/>+ citations + gaps"])
-  REJ(["Reject<br/>→ golden set"])
+  COMP(["Compose<br/>code, not a model"])
+  OUT(["Answer<br/>citations · conflicts · gaps"])
   SRC --> ING --> PAR --> GATE
   GATE -- fails --> REJ
   GATE -- passes --> STORE
   STORE --> RET --> GEN --> COMP --> OUT
-  GEN -.verified against.-> GATE
+  GEN -. re-verified .-> GATE
   classDef a fill:#F0E4E2,stroke:#93312B,color:#5C1F1B
   classDef b fill:#E4EDE8,stroke:#2C5F4F,color:#1B3B31
   classDef c fill:#F2EBDA,stroke:#8A5D12,color:#553A0B
@@ -253,27 +283,63 @@ flowchart LR
   class GATE,REJ c
   class STORE,COMP d
     </pre>
-    <figcaption><b>Figure 1</b> The gate appears twice on purpose: once on ingestion, once on generation. Both resolve spans against the <em>immutable snapshot</em>, never the chunk — a fabrication straddling a chunk boundary verifies clean against the fragment the model was handed, so a gate that checks the chunk confirms its own input.</figcaption>
+    <figcaption><b>Figure 1</b> The gate appears twice on purpose — once on ingestion, once on generation. Both resolve spans against the <em>immutable snapshot</em>, never the chunk: a fabrication straddling a chunk boundary verifies clean against the fragment the model was handed, so a gate that checks the chunk confirms its own input.</figcaption>
   </figure>
 
-  <p><strong>Ingestion and query share nothing but the store.</strong> Ingestion is a restartable batch job on spot capacity that can fall a day behind unnoticed; query is synchronous and latency-budgeted. Coupling them turns a parsing backlog into an answer-latency incident, which is the first thing I would check in the inherited system.</p>
-
-  <p><strong>No third party sits on the request path.</strong> Workers poll sources and model APIs on their own schedule and write to Postgres; the API only reads. A throttled upstream degrades <em>freshness</em>, which the response reports, rather than returning an error to a physician mid-consultation.</p>
-
-  <div class="tbl">
-  <table>
-    <thead><tr><th>Choice</th><th>Why</th><th>What it costs</th></tr></thead>
-    <tbody>
-      <tr><td>Modular monolith API, separate worker and ingestion fleets</td><td>Three deployables. At 0.23 QPS, service decomposition buys nothing and costs distributed transactions and on-call surface.</td><td>Module boundaries need enforcing in review; nothing physically prevents a cross-import.</td></tr>
-      <tr><td>One Postgres for evidence, metadata and vectors — <em>until it isn't</em></td><td>An embedding and the statement citing it commit in the same transaction. RLS covers tenant data for free.</td><td>Real, measured ceiling. Monograph 03 gives the numbers and the exit.</td></tr>
-      <tr><td>Object store as immutable source of truth, versioned + Object Lock</td><td>Every derived store is rebuildable; the gate resolves spans against it forever.</td><td>Rebuild is days, not minutes. Monograph 07 treats that asymmetry as a design input.</td></tr>
-      <tr><td>SQS + workers, not a streaming platform</td><td>Ingestion is a queue of independent document jobs. Kafka's ordering and replay solve a problem this workload does not have.</td><td>Becomes a real broker only when three or more independent consumers need replay — not for throughput.</td></tr>
-      <tr><td>Hosted model APIs, one provider interface, self-hosted behind it</td><td>Provider choice becomes routing rather than migration; an air-gapped hospital contract becomes config.</td><td>An abstraction to maintain that must not flatten provider features worth using.</td></tr>
-    </tbody>
-  </table>
+  <div class="grid2">
+  <ul class="pts">
+    <li><b>Ingestion and query share nothing but the store.</b> Ingestion is restartable batch on spot and may fall a day behind unnoticed; query is synchronous and budgeted. Coupling turns a parsing backlog into a latency incident.</li>
+    <li><b>No third party on the request path.</b> Workers poll sources and model APIs on their own schedule and write; the API only reads. A throttled upstream degrades <em>freshness</em>, which the response reports.</li>
+    <li><b>Three deployables, not fifteen.</b> API, workers, ingestion. At 0.23 QPS, service decomposition buys nothing and costs distributed transactions.</li>
+  </ul>
+  <ul class="pts">
+    <li><b>Object store is the source of truth.</b> Versioned, Object Lock on. Every derived store — sections, chunks, vectors — is rebuildable rather than precious.</li>
+    <li><b>SQS, not a streaming platform.</b> Ingestion is a queue of independent jobs. It becomes a real broker only when three or more consumers need replay, not for throughput.</li>
+    <li><b>Scaling order.</b> Workers horizontally first (stateless), then Postgres read replicas, then the vector index moves out. Not the reverse.</li>
+  </ul>
   </div>
 
-  <p><strong>Scaling order when it is needed:</strong> workers scale horizontally first because they are stateless, then Postgres gains read replicas, then the vector index moves out. Not the reverse.</p>
+  <figure>
+    <pre class="mermaid">
+flowchart LR
+  subgraph EDGE["Edge"]
+    UI(["Physician UI<br/>streamed"])
+  end
+  subgraph APP["Application — EKS"]
+    API(["FastAPI<br/>read paths only"])
+    WRK(["Workers<br/>parse · embed · gate"])
+    ORC(["Airflow<br/>ingestion DAGs"])
+  end
+  subgraph STATE["State"]
+    PG[("PostgreSQL<br/>evidence + pgvector")]
+    RD[("Redis<br/>cache · limits")]
+    OB[("Object store<br/>snapshots")]
+  end
+  subgraph EXT["External"]
+    MOD(["Model APIs<br/>small · frontier"])
+    FEED(["Publishers<br/>PubMed · societies"])
+  end
+  UI --> API
+  API --> PG
+  API --> RD
+  API --> MOD
+  ORC --> WRK
+  WRK --> FEED
+  WRK --> OB
+  WRK --> MOD
+  WRK --> PG
+  OBS(["Traces · metrics · cost"]) -. spans all three .-> APP
+  classDef e fill:#F0E4E2,stroke:#93312B,color:#5C1F1B
+  classDef a fill:#E4EDE8,stroke:#2C5F4F,color:#1B3B31
+  classDef s fill:#F2EBDA,stroke:#8A5D12,color:#553A0B
+  classDef x fill:#E8E6DF,stroke:#7B7566,color:#3D3930
+  class UI e
+  class API,WRK,ORC a
+  class PG,RD,OB s
+  class MOD,FEED,OBS x
+    </pre>
+    <figcaption><b>Figure 2</b> Deployment topology. Only the API touches the physician; only workers touch the outside world. The trace id emitted by observability is written into the statement row, so a physician verdict arriving six weeks later has something to attribute to.</figcaption>
+  </figure>
 </article>
 
 <!-- ===== 02 ===== -->
@@ -281,51 +347,78 @@ flowchart LR
   <div class="entry">
     <span class="no">Monograph 02 &middot; Corpus</span>
     <h2>Ingestion, Two Clocks &amp; Versioning</h2>
-    <p class="lede">You can always recover when a guideline was published. You can never recover when you learned it. That is one column now, or an honest audit trail never.</p>
+    <p class="lede">You can always recover when a guideline was published. You can never recover when you learned it. One column now, or an honest audit trail never.</p>
   </div>
 
-  <p>Every row carries <code>effective_time</code> (when the recommendation is in force) and <code>ingest_time</code> (when we indexed it), and every query names which it means. <code>status = 'current'</code> is not a flag anyone maintains — it is a materialised view over those two axes. This is what makes the assignment's own scenario work, and it is also what answers "what did the guideline say when I treated this patient in March 2026", which is a medico-legal question and not a feature request.</p>
+  <figure class="pair">
+    <pre class="mermaid">
+flowchart TB
+  IN(["Document"]) --> T{"Format"}
+  T -- "JATS / NLM XML" --> X(["Parse directly<br/>structure is free"])
+  T -- HTML --> H(["Readability extract<br/>rebuild heading tree"])
+  T -- "PDF, text layer" --> P1(["PyMuPDF<br/>text + coordinates"])
+  T -- "scanned / complex" --> P2(["Layout model<br/>OCR confidence per block"])
+  P1 --> TB{"Table region"}
+  P2 --> TB
+  TB -- "low confidence" --> Q(["Quarantine<br/>human review"])
+  TB -- "ok" --> S(["Structured sections"])
+  X --> S
+  H --> S
+  classDef a fill:#F0E4E2,stroke:#93312B,color:#5C1F1B
+  classDef b fill:#E4EDE8,stroke:#2C5F4F,color:#1B3B31
+  classDef c fill:#F2EBDA,stroke:#8A5D12,color:#553A0B
+  class IN,S a
+  class X,H,P1,P2 b
+  class T,TB,Q c
+    </pre>
+    <pre class="mermaid">
+flowchart TB
+  D(["Document<br/>work_id"])
+  V25(["Version 2025<br/>superseded<br/>valid_to 2027-03"])
+  V27(["Version 2027<br/>current<br/>valid_from 2027-03"])
+  S1(["§4 Pharmacotherapy<br/>replaced"])
+  S2(["§7 Monitoring<br/>replaced"])
+  S3(["§9 Paediatric<br/>carried forward<br/>still current"])
+  D --> V25
+  D --> V27
+  V25 -. superseded_by .-> V27
+  V27 --> S1
+  V27 --> S2
+  V25 --> S3
+  classDef a fill:#F0E4E2,stroke:#93312B,color:#5C1F1B
+  classDef b fill:#E8E6DF,stroke:#7B7566,color:#3D3930
+  classDef c fill:#E4EDE8,stroke:#2C5F4F,color:#1B3B31
+  classDef d fill:#F2EBDA,stroke:#8A5D12,color:#553A0B
+  class D a
+  class V25 b
+  class V27 c
+  class S1,S2,S3 d
+    </pre>
+    <figcaption><b>Figures 3 &amp; 4</b> Parsing is tiered by format because the failure modes differ, and the expensive path is entered only when the cheap one fails. Supersession is recorded <em>per section</em>: a 2027 edition typically replaces some chapters and leaves others standing, so whole-document supersession silently deletes still-current paediatric guidance the new edition never touched.</figcaption>
+  </figure>
 
-  <div class="tbl">
-  <table>
-    <thead><tr><th>Mechanism</th><th>Detail</th></tr></thead>
-    <tbody>
-      <tr><td>Bitemporal constraint</td><td><code>EXCLUDE USING gist (work_key WITH =, effective_range WITH &amp;&amp;, asserted_range WITH &amp;&amp;)</code> — range types rather than an extension, because no maintained bitemporal Postgres extension exists and this is the most correctness-critical table in the system.</td></tr>
-      <tr><td>Append-only</td><td>Never <code>UPDATE</code>. A revision is a new row. Composite B-tree <code>(work_key, ingest_time DESC)</code> serves both the <code>as_of</code> filter and latest-version-per-work.</td></tr>
-      <tr><td>Supersession is per section</td><td>A 2027 edition commonly replaces some chapters and leaves others standing. Whole-document supersession silently deletes still-current paediatric guidance the new edition never touched.</td></tr>
-      <tr><td>Snapshot at ingest</td><td>Publishers silently revise. Without a snapshot, a citation resolves against text that did not exist at the timestamp it claims.</td></tr>
-    </tbody>
-  </table>
-  </div>
+  <ul class="pts">
+    <li><b>Two clocks on every row.</b> <code>effective_time</code> (in force) and <code>ingest_time</code> (we learned it). <code>status='current'</code> is a materialised view over them, not a flag anyone maintains.</li>
+    <li><b>Bitemporal constraint, range types not an extension.</b> <code>EXCLUDE USING gist (work_key WITH =, effective_range WITH &amp;&amp;, asserted_range WITH &amp;&amp;)</code>. Append-only — a revision is a new row, never an <code>UPDATE</code>.</li>
+    <li><b>Snapshot at ingest.</b> Publishers silently revise. Without it a citation resolves against text that did not exist at the timestamp it claims.</li>
+    <li><b>Tables are a patient-safety surface.</b> A dosing table is where the instruction lives; a mis-parsed cell turns an eGFR threshold into a dose. Low-confidence tables are quarantined, not indexed.</li>
+    <li><b>No summarisation before indexing.</b> The gate verifies verbatim spans and a summary leaves nothing to check. Contextual retrieval <em>prepends</em> a blurb, never replaces the chunk — roughly 5.7%&nbsp;→&nbsp;3.7% top-20 failure, ~2.9% with contextual BM25.</li>
+    <li><b>Not everything is chunked.</b> A recommendation is not local: the population it applies to is often three paragraphs above the dose. Split on structure, never fixed tokens, and store <code>char_offset</code> back into the snapshot.</li>
+    <li><b>Dedup at two levels.</b> Exact by hash and identifier (DOI, PMID); near-duplicate by MinHash. The same guideline arrives as publisher PDF, PubMed XML and society HTML — keep alternates as manifestations, since the PDF is what a physician wants opened at the cited page.</li>
+  </ul>
 
   <h4>Multimodal: fuse at the statement, never at the tensor</h4>
-  <p>The reflex is to embed prose, dosing tables and figures into one latent space. Wrong level, for three checkable reasons: they have <strong>incompatible revision policies</strong>, a joint embedding is <strong>unauditable</strong>, and the evidence pointer each needs is structurally different. The level at which they are commensurable is the <strong>statement</strong> — every modality is a sensor emitting a typed clinical assertion with a pointer back to its own evidence.</p>
-
   <div class="tbl">
   <table>
     <thead><tr><th>Modality</th><th>Evidence pointer</th><th>Why it is not prose</th></tr></thead>
     <tbody>
-      <tr><td>Guideline prose</td><td><code>char_start</code> / <code>char_end</code> into the snapshot</td><td>The default case, and the only one most pipelines handle.</td></tr>
-      <tr><td>Dosing / eligibility table</td><td>table id + row/column coordinates + header path</td><td>A cell means nothing without its row and column headers. Linearising a table into prose destroys exactly the structure that carries the instruction.</td></tr>
-      <tr><td>Figure, algorithm, flowchart</td><td>page + bounding box + caption + extracted nodes</td><td>Treatment algorithms are frequently <em>only</em> in the figure. Caption-only indexing silently drops them.</td></tr>
-      <tr><td>Structured reference<br/>formulary, drug database</td><td>record id + version</td><td>Already typed. Embedding it is strictly worse than joining to it.</td></tr>
+      <tr><td>Guideline prose</td><td><code>char_start</code>/<code>char_end</code> into the snapshot</td><td>The default case, and the only one most pipelines handle.</td></tr>
+      <tr><td>Dosing / eligibility table</td><td>table id + row/column + header path</td><td>A cell means nothing without its headers. Linearising destroys the structure carrying the instruction.</td></tr>
+      <tr><td>Figure, treatment algorithm</td><td>page + bounding box + caption + extracted nodes</td><td>Algorithms are frequently <em>only</em> in the figure. Caption-only indexing drops them silently.</td></tr>
+      <tr><td>Structured reference</td><td>record id + version</td><td>Already typed. Embedding it is strictly worse than joining to it.</td></tr>
     </tbody>
   </table>
   </div>
-
-  <div class="note hold">
-    <div class="kicker">The one I would spend review budget on</div>
-    <p><strong>Tables are a patient-safety surface, not a parsing nicety.</strong> A dosing table is where the clinical instruction actually lives, and a mis-parsed cell turns an eGFR threshold into a dose. Table extraction carries its own confidence score; below threshold it is quarantined for human review rather than indexed. Parsing is tiered — JATS/NLM XML parsed directly where it exists (structure is free, prefer it whenever the same content exists twice), HTML by readability extraction, text-layer PDF via PyMuPDF with coordinates, and only scanned or complex layouts routed to the expensive layout model.</p>
-  </div>
-
-  <h4>Chunking, and what not to do to it</h4>
-  <ul>
-    <li><strong>Not everything is chunked.</strong> A recommendation is not local — the population it applies to is often three paragraphs above the sentence stating the dose. Chunk long guidelines and reviews; leave short documents whole.</li>
-    <li><strong>Split on structural boundaries, never fixed token counts.</strong> Never separate a number from its unit or subject, never split a table, never separate a recommendation from its evidence grade. Carry the document header into every chunk and store <code>char_offset</code> back into the snapshot.</li>
-    <li><strong>No summarisation before indexing.</strong> The gate verifies verbatim spans; a summary leaves nothing to check. Contextual retrieval <em>prepends</em> a blurb and never replaces the chunk — that is what cuts top-20 retrieval failure roughly 5.7%&nbsp;→&nbsp;3.7%, and to ~2.9% with contextual BM25.</li>
-    <li><strong>Dedup at two levels.</strong> Exact by normalised hash and identifier (DOI, PMID); near-duplicate by MinHash over shingles. The same guideline routinely arrives as publisher PDF, PubMed XML and society HTML. Keep the alternates as manifestations — the PDF is what a physician wants opened at the cited page.</li>
-    <li><strong>Version the embedding model per chunk.</strong> Migration is dual-write into a second index and an atomic alias flip, never in-place.</li>
-  </ul>
 </article>
 
 <!-- ===== 03 ===== -->
@@ -333,32 +426,65 @@ flowchart LR
   <div class="entry">
     <span class="no">Monograph 03 &middot; Retrieval</span>
     <h2>Hybrid Search — and the Three Jobs That Are Not Search</h2>
-    <p class="lede">Only one of the four retrieval jobs this platform performs is actually a search problem. Solving the other three with vectors is the most common and most expensive mistake available here.</p>
+    <p class="lede">Only one of the four retrieval jobs is a search problem. Solving the other three with vectors is the most expensive mistake available here.</p>
+  </div>
+
+  <figure class="pair">
+    <pre class="mermaid">
+flowchart TB
+  C(["Retrieval need"])
+  C --> N(["Duplicate detection<br/>MinHash + LSH"])
+  C --> E(["Drug / condition<br/>RxNorm alias table"])
+  C --> H(["Prior answers<br/>SQL WHERE"])
+  C --> S(["Cross-guideline evidence<br/>BM25 + dense + RRF"])
+  S --> RR(["Cross-encoder rerank<br/>top 50 → 8"])
+  N --> O(["Assembled context"])
+  E --> O
+  H --> O
+  RR --> O
+  RK(["Reranker"]) -. harms — ranks<br/>the duplicate first .-> N
+  classDef a fill:#F0E4E2,stroke:#93312B,color:#5C1F1B
+  classDef b fill:#E8E6DF,stroke:#7B7566,color:#3D3930
+  classDef c fill:#E4EDE8,stroke:#2C5F4F,color:#1B3B31
+  classDef d fill:#F2EBDA,stroke:#8A5D12,color:#553A0B
+  class C,O a
+  class N,E,H b
+  class S,RR c
+  class RK d
+    </pre>
+    <pre class="mermaid">
+xychart-beta
+  title "pgvector QPS against index size — 32GB box, 1536 dims"
+  x-axis ["1M", "2M", "2.5M", "3M"]
+  y-axis "queries per second" 0 --> 2400
+  bar [2100, 2100, 1155, 102]
+    </pre>
+    <figcaption><b>Figures 5 &amp; 6</b> Three of the four jobs are cheap, deterministic and not vector search — and a reranker actively <em>harms</em> duplicate detection by ranking the duplicate first. The cliff on the right is a RAM cliff: QPS collapsed ~95% once the index passed <code>shared_buffers</code>, while the buffer hit ratio stayed above 98%, so nothing looked wrong on the dashboard.</figcaption>
+  </figure>
+
+  <div class="grid2">
+  <ul class="pts">
+    <li><b>Hybrid is insurance against disjoint failures.</b> Dense collapses on <code>SGLT2</code>, <code>NT-proBNP</code>, <code>eGFR &lt;30</code>, ICD codes — exactly what physicians type. BM25 cannot connect "kidney impairment" to "renal insufficiency".</li>
+    <li><b>RRF (k=60), not weighted blending.</b> BM25 and cosine are incomparable scales; any fixed weight silently stops being right as the corpus grows. Tune only once accept/reject supplies labels.</li>
+    <li><b>Filters are not post-processing.</b> Tenant, effective status, specialty, population. Adult dosing for a paediatric question is a correctness failure, not a relevance one.</li>
+  </ul>
+  <ul class="pts">
+    <li><b>Filtered ANN is the bad case here, not the edge case.</b> One broad filter drops recall to ~90.8%; an AND over two broad values to ~39.7%. Every query carries four filters at once.</li>
+    <li><b>At ~300M chunks pgvector is not a close call.</b> The measured ceiling is ~10M vectors provisioned properly, ~3M if not. My earlier instinct said 50M chunks — the evidence puts it an order of magnitude lower, so this is a <em>when</em>, not an <em>if</em>.</li>
+    <li><b>Mitigations that buy runway:</b> <code>halfvec</code>, <code>shared_buffers</code> above the index size, dimension truncation (512 dims retains ~94–96% of NDCG@10), and pgvector 0.8+ iterative index scans.</li>
+  </ul>
   </div>
 
   <div class="tbl">
   <table>
-    <thead><tr><th>Job</th><th>What it actually is</th><th>Why not vector search</th></tr></thead>
+    <thead><tr><th>Option</th><th>For</th><th>Against</th><th>Position</th></tr></thead>
     <tbody>
-      <tr><td>Duplicate guideline detection</td><td><strong>MinHash / SimHash + LSH</strong></td><td>Cosine similarity conflates "same recommendation restated" with "related but clinically distinct" — precisely the boundary that must stay sharp. And a <strong>reranker actively harms this job</strong>: it ranks the duplicate highest, which is exactly backwards.</td></tr>
-      <tr><td>Drug and condition normalisation</td><td><strong>Record linkage</strong> — RxNorm / SNOMED alias tables + fuzzy match</td><td>Resolves most mentions in microseconds and deterministically. Embeddings are fallback candidate generation only, never auto-accept, and every resolution writes back to the alias table.</td></tr>
-      <tr><td>"What have we answered before"</td><td><strong>A <code>WHERE</code> clause</strong> on <code>(entity_id, time_range)</code></td><td>Not retrieval at all.</td></tr>
-      <tr><td>Cross-guideline evidence assembly</td><td><strong>The only genuine hybrid search</strong></td><td>—</td></tr>
+      <tr><td>pgvector + Postgres FTS</td><td>One datastore. An embedding and the statement citing it commit together. RLS for free.</td><td>The RAM cliff above; FTS weaker than Lucene at BM25 tuning.</td><td><strong>Day one</strong> — almost certainly what exists.</td></tr>
+      <tr><td>OpenSearch</td><td>BM25, kNN and filters in one managed engine, Lucene-grade scoring.</td><td>JVM operations, cost, a second source of truth.</td><td><strong>Migration target.</strong></td></tr>
+      <tr><td>Qdrant</td><td>Best filtered ANN via payload indexes, quantization built in.</td><td>Vector-only — BM25 lives elsewhere regardless.</td><td>If vector scale outruns text scale.</td></tr>
     </tbody>
   </table>
   </div>
-
-  <p>For that one real job, hybrid is <strong>insurance against disjoint failure modes</strong>, not a silver bullet. Dense retrieval collapses on rare tokens — <code>SGLT2</code>, <code>NT-proBNP</code>, <code>eGFR &lt;30</code>, a specific drug name, an ICD code — which are exactly what a physician types. BM25 cannot connect "kidney impairment" to "renal insufficiency". Fuse with RRF (k=60) rather than weighted scores, because BM25 and cosine are on incomparable scales and any fixed blend weight silently stops being right as the corpus grows. Move to a tuned combination only once accept/reject decisions have supplied a label set.</p>
-
-  <div class="note hold">
-    <div class="kicker">The pgvector cliff is a RAM cliff, and it is invisible in the metric people watch</div>
-    <p>Published measurement on a 32&nbsp;GB box at 1536 dims: QPS held near 2,100 out to 2M vectors, fell ~45% at 2.5M when the index passed <code>shared_buffers</code>, and <strong>collapsed ~95% by 3M — to about 102 QPS — while the buffer hit ratio stayed above 98%</strong>. Nothing looked wrong on the dashboard. Practical ceiling is roughly <strong>10M vectors provisioned properly, ~3M if not</strong>: <code>halfvec</code>, <code>shared_buffers</code> sized above the index, and dimension truncation (512 dims retains ~94–96% of NDCG@10).</p>
-    <p><strong>At ~300M chunks, pgvector is not a close call.</strong> My earlier instinct was to name a 50M-chunk trigger; the measured evidence puts the ceiling an order of magnitude lower, so this is a <em>when</em>, not an <em>if</em>. Start on pgvector because it is almost certainly what exists and it is correct for a pilot corpus, keep retrieval behind one interface, and plan the move to OpenSearch or Qdrant as scheduled work rather than an emergency.</p>
-  </div>
-
-  <p><strong>Filtered vector search degrades far worse than intuition suggests, and our filters are the bad case.</strong> A single broad filter drops recall to about <strong>90.8%</strong>; an AND over two broad values to about <strong>39.7%</strong>. Pre-filtering fragments the HNSW graph; post-filtering silently returns too few. Every query here carries tenant, effective status, specialty and population filters simultaneously — so this is the normal case, not the edge case. pgvector 0.8+ iterative index scans are load-bearing, and this is the single strongest argument for an engine that treats filtered ANN as a first-class problem.</p>
-
-  <p><strong>Embedding choice is constrained before it is optimised.</strong> If the corpus is multilingual the biomedical-tuned embedders mostly are not, and coverage beats domain lift — take the domain lift from a downstream reranker instead. Metadata that earns its place: <code>char_start</code>/<code>char_end</code> (what makes "embed raw text" usable by the gate), <code>primary_source_id</code> (Monograph 05), the two clocks, <code>entity_ids[]</code>, <code>observation_status</code>, and the lineage quartet <code>trace_id</code> / <code>prompt_version</code> / <code>extractor_version</code> / <code>embedding_model_version</code>.</p>
 </article>
 
 <!-- ===== 04 ===== -->
@@ -366,285 +492,440 @@ flowchart LR
   <div class="entry">
     <span class="no">Monograph 04 &middot; Generation</span>
     <h2>RAG, and Where Agents Are Forced to Stop</h2>
-    <p class="lede">The criterion is not "is this complex" but "is the step count knowable in advance". Almost all of this pipeline's steps are, and pretending otherwise buys a planner nobody can test.</p>
+    <p class="lede">The criterion is not "is this complex" but "is the step count knowable in advance". Almost all of this pipeline's steps are.</p>
   </div>
 
-  <p>"How should treatment differ for a patient with heart failure, CKD and type 2 diabetes according to current guidelines?" is not one retrieval. Three guideline bodies each address one condition and the clinically interesting content is where they modify each other — agents indicated across all three, dosing that changes with renal function, monitoring one introduces that another never mentions. But the <em>shape</em> of that work is known in advance, so it is a workflow with a bounded planner, not an agent.</p>
-
-  <figure>
+  <figure class="pair">
     <pre class="mermaid">
 flowchart TB
-  subgraph WF["Workflow — fixed step count, traced, no planner"]
-    direction LR
-    U(["Understand<br/>→ ontology codes"]) --> P(["Plan<br/>fixed taxonomy, max 6"]) --> H(["Retrieve + rerank<br/>parallel per sub-query"]) --> A(["Assemble<br/>passage IDs attached"]) --> G(["Generate<br/>typed cited statements"]) --> V(["Grounding gate"]) --> C(["Compose<br/>deterministic"])
+  subgraph WF["Workflow — fixed steps, traced, no planner"]
+    direction TB
+    U(["Understand<br/>→ ontology codes"]) --> P(["Plan<br/>fixed taxonomy, max 6"])
+    P --> H(["Retrieve + rerank<br/>parallel per sub-query"])
+    H --> A(["Assemble<br/>passage IDs attached"])
+    A --> G(["Generate<br/>typed cited statements"])
+    G --> V(["Grounding gate"])
+    V --> CO(["Compose<br/>deterministic"])
   end
-  subgraph AG["Agent — step count unknown in advance"]
-    direction LR
+  subgraph AG["Agent — step count unknown"]
+    direction TB
     CR(["Contradiction<br/>resolution"])
     CH(["Corroboration<br/>hunt"])
   end
-  C --> OUT(["Answer + citations<br/>+ conflicts + gaps"])
-  V -. any statement fails .-> ABST(["Abstain<br/>report the gap"])
-  C -. conflicting guidance found .-> AG
-  AG -. partial results, never a loop .-> C
-  classDef wf fill:#E4EDE8,stroke:#2C5F4F,color:#1B3B31
-  classDef ag fill:#F0E4E2,stroke:#93312B,color:#5C1F1B
-  classDef out fill:#F2EBDA,stroke:#8A5D12,color:#553A0B
-  class U,P,H,A,G,V,C wf
-  class CR,CH ag
-  class OUT,ABST out
+  CO --> OUT(["Answer"])
+  V -. all statements fail .-> AB(["Abstain"])
+  CO -. conflict found .-> AG
+  AG -. partial results, never a loop .-> CO
+  classDef w fill:#E4EDE8,stroke:#2C5F4F,color:#1B3B31
+  classDef g fill:#F0E4E2,stroke:#93312B,color:#5C1F1B
+  classDef o fill:#F2EBDA,stroke:#8A5D12,color:#553A0B
+  class U,P,H,A,G,V,CO w
+  class CR,CH g
+  class OUT,AB o
     </pre>
-    <figcaption><b>Figure 2</b> Everything in the left box is a function call. Modelling it as graph nodes buys one uniform tracing surface, not a state machine — and the design should say so rather than pretend the linear path needed a planner. Only the right box gets checkpointing, budgets and interrupts.</figcaption>
+    <pre class="mermaid">
+stateDiagram-v2
+  [*] --> Plan
+  Plan --> Search
+  Search --> Read
+  Read --> Judge
+  Judge --> Search : budget remains and unresolved
+  Judge --> Resolved : independent primary source found
+  Judge --> Contradicted : primary source refutes
+  Judge --> Unresolved : step or clock budget exhausted
+  Resolved --> [*]
+  Contradicted --> [*]
+  Unresolved --> [*]
+    </pre>
+    <figcaption><b>Figures 7 &amp; 8</b> Everything in the left box is a function call — modelling it as graph nodes buys one uniform tracing surface, not a state machine. Only the right box gets checkpointing and budgets, and it has <strong>three terminal states with <code>Unresolved</code> first-class</strong>: an agent that cannot finish returns partial evidence and lowers confidence. It never loops, and it never adjudicates by asking a second model to agree.</figcaption>
   </figure>
 
-  <p><strong>Two jobs genuinely warrant agency</strong>, because their step count is unknowable: hunting corroborating primary evidence, and resolving a contradiction between two guideline bodies. Both get a hard step budget, a wall-clock cap, and <strong>partial results rather than a loop</strong>. Three terminal states — resolved, contradicted, and <strong><code>unresolved</code> as a first-class result</strong> that lowers confidence rather than retrying. Every tool either holds is read or search only: no write, no send.</p>
+  <ul class="pts">
+    <li><b>Two jobs genuinely warrant agency.</b> Hunting corroborating primary evidence, and resolving a contradiction between guideline bodies. Both get a hard step budget and a wall-clock cap.</li>
+    <li><b>Fan out by lens, not by volume.</b> Three agents asking the same question produce correlated agreement that reads as confirmation. Three with different remits produce information.</li>
+    <li><b>Read or search tools only.</b> No write, no send — that breaks the injection chain even inside the agentic component.</li>
+  </ul>
 
-  <p><strong>Fan out by lens, not by volume.</strong> Three agents asking the same question produce correlated agreement that reads as confirmation. Three with different remits produce information.</p>
-
-  <h4>Patterns I would decline, and why</h4>
+  <h4>Patterns I would decline, and the evidence</h4>
   <div class="tbl">
   <table>
-    <thead><tr><th>Declined</th><th>Evidence</th></tr></thead>
+    <thead><tr><th>Declined</th><th>Why</th></tr></thead>
     <tbody>
-      <tr><td>Free-form agent loop on the clinical path</td><td><strong>Untestable</strong> — no regression suite exists for a control flow that differs per run, so quality becomes unmeasurable exactly where it matters most. Reproducibility is also medico-legal: the same question twice must not yield materially different guidance.</td></tr>
-      <tr><td>Chain-of-thought on extraction</td><td>Gains are near-exclusive to maths and symbolic tasks, negligible or negative elsewhere, and it fights constrained decoding.</td></tr>
-      <tr><td>An LLM critic instead of a deterministic verifier</td><td>Intrinsic self-correction fails and sometimes degrades; it works only with reliable <em>external</em> feedback. The grounding gate is that feedback.</td></tr>
-      <tr><td>Multi-agent debate</td><td>Roughly 60.7% at ~17,400 tokens against 66.7% at ~619 for isolated self-correction — worse accuracy at ~28&times; the spend, via sycophantic conformity.</td></tr>
-      <tr><td>Ensembling similar models</td><td>A 9-model panel drawn from 7 families carries about <strong>two</strong> independent votes; error correlation increases with accuracy.</td></tr>
+      <tr><td>Free-form agent loop on the clinical path</td><td><strong>Untestable</strong> — no regression suite exists for a control flow that differs per run. Reproducibility is also medico-legal: the same question twice must not yield materially different guidance.</td></tr>
+      <tr><td>Chain-of-thought on extraction</td><td>Gains near-exclusive to maths and symbolic tasks; negligible or negative elsewhere, and it fights constrained decoding.</td></tr>
+      <tr><td>An LLM critic instead of a deterministic verifier</td><td>Intrinsic self-correction fails and sometimes degrades. It works only with reliable <em>external</em> feedback — the gate is that feedback.</td></tr>
+      <tr><td>Multi-agent debate</td><td>~60.7% at ~17,400 tokens against 66.7% at ~619 for isolated self-correction — worse accuracy at ~28&times; the spend, via sycophantic conformity.</td></tr>
+      <tr><td>Ensembling similar models</td><td>A 9-model panel from 7 families carries about <strong>two</strong> independent votes; error correlation increases with accuracy.</td></tr>
       <tr><td>Long chains</td><td>70% per step over three steps is 34%. Multiplicative.</td></tr>
-      <tr><td>Tools on the extractor</td><td>Ingested medical PDFs are <strong>untrusted input</strong>. Untrusted content plus tool access plus a write path is the injection setup — schema-constrained decoding, no tools, break the trifecta.</td></tr>
+      <tr><td>Tools on the extractor</td><td>Ingested PDFs are <strong>untrusted input</strong>. Untrusted content plus tools plus a write path is the injection setup.</td></tr>
+      <tr><td><strong>Kept:</strong> schema-constrained decoding</td><td>The exception that helps on both axes — improves quality and speeds generation. The cited "structure hurts reasoning" result ran its structured arm as naive JSON mode with no schema.</td></tr>
     </tbody>
   </table>
   </div>
-  <p><strong>Schema-constrained decoding is the exception that helps on both axes</strong> — it improves quality and speeds generation. The widely cited "structure hurts reasoning" result ran its structured arm as naive JSON mode with no schema.</p>
 </article>
 
-<!-- ===== 05 ===== -->
+<!-- ===== 05 — CASE STUDY ===== -->
 <article class="monograph">
   <div class="entry">
-    <span class="no">Monograph 05 &middot; Evidence</span>
-    <h2>Provenance, the Grounding Gate &amp; Silence</h2>
-    <p class="lede">The referee is deterministic and it is the most important component in the system. A check that cannot fail is worse than no check, because it reports as passing.</p>
+    <span class="no">Monograph 05 &middot; Worked example</span>
+    <h2>One Query, Traced End to End</h2>
+    <p class="lede">"How should treatment differ for a patient with heart failure, CKD and type 2 diabetes according to current guidelines?" — every architectural claim above, exercised on one request.</p>
   </div>
 
-  <p>When the model emits a statement it emits the passage IDs that statement came from, drawn from the closed set placed in its context. Those IDs are foreign keys, so rendering a citation is a join — a citation cannot disagree with its evidence, and an invented ID fails immediately because it does not exist. The chain is <code>document → version → section(page, char_span) → passage → statement → citation</code>, stored, never reconstructed.</p>
+  <figure class="tall">
+    <pre class="mermaid">
+sequenceDiagram
+  autonumber
+  participant P as Physician
+  participant A as API
+  participant R as Retrieval
+  participant M as Models
+  participant G as Gate
+  participant S as Evidence store
+  P->>A: three conditions, treatment differences
+  A->>M: understand — small model, structured out
+  M-->>A: 3 codes, adult, needs_decomposition true
+  A->>M: plan — fixed taxonomy
+  M-->>A: 5 sub-queries, cap 6
+  par one per sub-query
+    A->>R: hybrid, filtered by tenant and status
+    R->>S: BM25 50 + dense 50, RRF
+    S-->>R: candidates
+    R-->>A: reranked top 8
+  end
+  A->>M: generate typed cited statements
+  M-->>A: 7 statements with passage IDs
+  A->>G: verify each statement
+  G->>S: resolve span in the snapshot
+  G-->>A: 6 pass, 1 rejected on a number
+  A->>A: compose deterministically
+  A-->>P: answer, citations, 1 conflict, 1 gap
+    </pre>
+    <figcaption><b>Figure 9</b> Nine model-facing hops, of which two use a frontier model. The gate resolves spans against the store, not against what the model was shown. The rejected statement is not retried — it is dropped and logged as a free labelled failure.</figcaption>
+  </figure>
 
-  <div class="tbl">
-  <table>
-    <thead><tr><th>Gate</th><th>Rule</th><th>Cost</th></tr></thead>
-    <tbody>
-      <tr><td>1 · Retrieval floor</td><td>If the best reranked passage is below threshold, generation never runs.</td><td>One comparison.</td></tr>
-      <tr><td>2 · Closed-set IDs</td><td>A passage ID absent from the context is a hard failure, not a warning.</td><td>A set membership test.</td></tr>
-      <tr><td>3 · <strong>Numeric grounding</strong></td><td><strong>A statement carrying a dose, threshold, age cutoff or interval is rejected unless that figure appears literally in its cited span</strong>, NFKC-normalised. Resolved against the <em>snapshot</em>, never the chunk.</td><td>String matching. This is the control that matters most, because numbers are what reach the patient.</td></tr>
-      <tr><td>4 · Effectiveness</td><td>Every cited section must still be in force at the query's <code>as_of</code>, or the answer carries an explicit staleness notice.</td><td>Already in the join.</td></tr>
-      <tr><td>5 · Entailment</td><td>Non-numeric claims checked against their own cited passages by an NLI or small judge model.</td><td>One small-model call per statement — the only gate with real cost.</td></tr>
-    </tbody>
-  </table>
-  </div>
+  <ol class="trace">
+    <li><b>Understand — small model, ~600 tokens</b>
+      Conditions normalised to codes so filters can apply. Population matters: paediatric guidance would change every downstream retrieval.
+      <pre class="pay">{"conditions": ["I50.9 heart failure", "N18.3 CKD stage 3",
+                "E11.9 type 2 diabetes"],
+ "population": "adult", "intent": "treatment_modification",
+ "needs_decomposition": true}</pre>
+    </li>
+    <li><b>Plan — bounded, from a fixed taxonomy</b>
+      Five sub-queries, hard cap six. The model chooses <em>which</em> types apply and how to phrase them; it cannot invent a new type. That is the difference between a bounded planner and an agent.
+      <pre class="pay">per_condition   × 3   first-line therapy for each condition
+interaction     × 1   HF + CKD — agents indicated in both
+dose_adjustment × 1   renal dosing at eGFR 30-59</pre>
+    </li>
+    <li><b>Retrieve — five parallel hybrid searches</b>
+      Each filtered before ranking. 50 BM25 + 50 dense per sub-query, fused by RRF, reranked to 8. BM25 is what actually finds <code>SGLT2</code> and <code>eGFR</code>; dense is what connects "renal insufficiency" to the physician's "kidney disease".
+      <pre class="pay">filter: tenant_id=t_44  status=current
+        population=adult  as_of=now()
+returns: 40 passages → RRF → rerank → 8 kept
+         best score 0.81   floor 0.35   → proceed</pre>
+    </li>
+    <li><b>Assemble — grouped, graded, budgeted</b>
+      Deduplicated by <code>primary_source_id</code>, not by document — two guidelines citing the same trial count once. Ordered by evidence grade, capped at ~4k tokens, every passage carrying its ID.</li>
+    <li><b>Generate — typed statements, never prose</b>
+      The model's entire output is a list of claims with the passage IDs each came from, plus any numbers it asserted. It is not writing the answer; it is proposing evidence-linked assertions.
+      <pre class="pay">{"claim": "Metformin requires dose reduction below eGFR 45",
+ "passages": ["p_9110"], "status": "recommended",
+ "numbers": ["45"]}</pre>
+    </li>
+    <li><b>Gate — the deterministic referee</b>
+      Passage IDs must be in the closed set. Every number must appear verbatim in its cited span, resolved <em>in the snapshot</em>. One statement cited a threshold its span did not contain and was dropped — silently to the physician, loudly to Gold-A.
+      <pre class="pay">p_9110 span 4821:4977 contains "45"    ✓ accept
+p_7744 span 1200:1310 asserts "40"    ✗ not in span
+       → rejected, logged, never shown</pre>
+    </li>
+    <li><b>Compose — code, not a model</b>
+      Grouped by condition, conflicts shown side by side with issuing body and date, gaps stated explicitly. No second generation pass, so nothing drifts from what the gate approved.</li>
+  </ol>
 
-  <p>Every rejection is a <strong>free labelled failure</strong> and goes straight to the golden set. That is the cheapest, most mechanical and most immediate label source the architecture produces, and it costs nothing to collect.</p>
-
-  <div class="note hold">
-    <div class="kicker">Absence has four meanings and they must never render alike</div>
-    <p>Every statement carries an <strong>observation status</strong>, because conflating these is the failure mode that reaches a patient:</p>
-    <ul>
-      <li><code>recommended</code> — a guideline affirmatively says to do it.</li>
-      <li><code>recommended_against</code> — a guideline explicitly advises against it. <strong>This is evidence.</strong></li>
-      <li><code>not_addressed</code> — no current guideline covers this combination. <strong>This is not evidence of anything</strong>, and it is the common case for genuinely multi-morbid patients.</li>
-      <li><code>degraded</code> — parsing or retrieval failed. We do not know. This must never be presented as either of the two above.</li>
+  <div class="note wide">
+    <div class="kicker">What the answer says — and the most valuable line in it</div>
+    <ul class="pts">
+      <li><b>Agreement, cited:</b> one drug class is indicated across all three conditions, with three independent primary sources behind it — the strongest form of support the system can express.</li>
+      <li><b>A conflict, surfaced not resolved:</b> two bodies differ on initiation thresholds. Both are shown, attributed by issuing body, year and evidence grade, with the axis of disagreement named. The system does not pick.</li>
+      <li><b>A gap, stated plainly:</b> <code>not_addressed</code> — no current guideline covers all three conditions simultaneously. Everything above is assembled from pairwise guidance.</li>
+      <li><b>Why that last line matters most.</b> It is the honest boundary of the evidence, and it is exactly what a fully generative system would smooth over. A physician can act on "no guideline covers this triad"; they cannot act safely on a confident synthesis that hides the same fact.</li>
     </ul>
-    <p>An unmeasured axis <strong>widens the confidence interval rather than narrowing it</strong>. A system that answers confidently because it retrieved nothing has inverted the meaning of its own silence.</p>
   </div>
-
-  <p><strong>Corroboration must be counted at the primary-evidence level.</strong> Three review articles citing the same trial are one piece of evidence repeated cheaply, and text similarity returns exactly those copies first. Two guidelines agreeing because both cite the same RCT is echo, not independent support. So every passage carries a <code>primary_source_id</code> derived from the citation graph, and corroboration counts distinct primary sources — never distinct documents. Without it, confidence rises with citation volume, which is the opposite of what it should track.</p>
-
-  <p><strong>When evidence is insufficient the system abstains</strong>, returning the closest evidence found and stating plainly that no current guideline addresses the combination. Abstention rate is a tracked metric; a rise on a topic is the clearest available signal of a corpus gap and routes to the content team, not to on-call. <strong>When evidence conflicts, do not resolve it — surface it.</strong> Present both positions attributed by issuing body, date and evidence grade, and name the axis of disagreement. Physicians are trained to weigh conflicting evidence; silently picking a winner is the worst available behaviour precisely because it is invisible.</p>
 </article>
 
 <!-- ===== 06 ===== -->
 <article class="monograph">
   <div class="entry">
-    <span class="no">Monograph 06 &middot; Platform</span>
-    <h2>Core Backend &amp; Multi-Tenancy</h2>
-    <p class="lede">Row-level security handles the relational data. The vector index is the part it does not cover, and that is where tenant isolation is actually decided.</p>
+    <span class="no">Monograph 06 &middot; Evidence</span>
+    <h2>Provenance, the Gate &amp; the Meaning of Silence</h2>
+    <p class="lede">A check that cannot fail is worse than no check, because it reports as passing.</p>
   </div>
 
-  <p>Three deployables: a FastAPI application, a worker fleet on Celery or ARQ over Redis and SQS, and the ingestion pipeline on Airflow. Core schema is <code>tenant</code>, <code>user</code>, <code>membership</code>, <code>role</code>, the bitemporal corpus chain from Monograph 02, then <code>query</code>, <code>answer</code>, <code>statement</code>, <code>citation</code>, <code>feedback</code>, <code>audit_event</code>, <code>ingestion_job</code>.</p>
-
-  <div class="tbl">
-  <table>
-    <thead><tr><th>Data class</th><th>Model</th><th>Why</th></tr></thead>
-    <tbody>
-      <tr><td>Tenant operational data</td><td>Shared schema, <strong>Postgres row-level security</strong></td><td>Enforced by the database, so an ORM mistake or a forgotten <code>WHERE</code> cannot leak. Application-level scoping is one missing clause from an incident.</td></tr>
-      <tr><td>Public medical literature</td><td><strong>One shared corpus</strong></td><td>The guideline is identical for every customer. Duplicating ~300M chunks per tenant is indefensible on cost and multiplies every re-embedding job by the customer count.</td></tr>
-      <tr><td>Tenant-private protocols and formularies</td><td><strong>Physically separate collection</strong></td><td>Not a filter column. For data whose leakage would end the company, physical separation beats a predicate one code path can forget.</td></tr>
-    </tbody>
-  </table>
-  </div>
+  <figure class="pair">
+    <pre class="mermaid">
+flowchart TB
+  M(["Statement<br/>+ passage IDs"]) --> A{"IDs in the<br/>closed set"}
+  A -- no --> R(["Reject"])
+  A -- yes --> B{"Carries a<br/>number"}
+  B -- yes --> D{"Verbatim in<br/>the cited span"}
+  D -- no --> R
+  D -- yes --> C{"Entailed by<br/>its passages"}
+  B -- no --> C
+  C -- no --> R
+  C -- yes --> E{"Section still<br/>in force"}
+  E -- no --> W(["Emit with<br/>staleness notice"])
+  E -- yes --> OK(["Emit"])
+  R --> GS[("Gold-A<br/>free labelled failure")]
+  classDef a fill:#F0E4E2,stroke:#93312B,color:#5C1F1B
+  classDef b fill:#F2EBDA,stroke:#8A5D12,color:#553A0B
+  classDef c fill:#E4EDE8,stroke:#2C5F4F,color:#1B3B31
+  class M a
+  class A,B,C,D,E b
+  class OK,W c
+  class R,GS a
+    </pre>
+    <pre class="mermaid">
+flowchart TB
+  DOC[("document")] --> VER[("document_version<br/>status · valid_from")]
+  VER --> SEC[("section<br/>page_no · char_span")]
+  SEC --> CHK[("chunk<br/>text · embedding")]
+  CHK --> RUN[("retrieval_run<br/>filters · scores")]
+  RUN --> STM[("statement<br/>claim · entailment")]
+  STM --> CIT[("citation<br/>a join, not text")]
+  CIT --> ANS(["Rendered answer"])
+  SEC -. deep link, page + span .-> CIT
+  classDef a fill:#E4EDE8,stroke:#2C5F4F,color:#1B3B31
+  classDef b fill:#F2EBDA,stroke:#8A5D12,color:#553A0B
+  classDef c fill:#F0E4E2,stroke:#93312B,color:#5C1F1B
+  class DOC,VER,SEC,CHK a
+  class RUN,STM b
+  class CIT,ANS c
+    </pre>
+    <figcaption><b>Figures 10 &amp; 11</b> Five gates ordered cheapest first, and the provenance chain they protect. Because <code>section</code> carries page number and character span, a citation deep-links into the source PDF and highlights it — the physician verifies against the document, not against a rendered quote. An invented passage ID fails at the first gate because it does not exist.</figcaption>
+  </figure>
 
   <div class="note hold">
-    <div class="kicker">Three inherited defects I would grep for in week one</div>
-    <p><strong>RLS does not protect the vector index.</strong> An ANN search is not a row scan; a retrieval path that forgets its tenant filter returns another hospital's protocol with no database-level objection. So no caller builds a search directly — one retrieval function applies the predicate, with a test asserting a cross-tenant query returns zero rows.</p>
-    <p><strong>PgBouncer in transaction mode breaks session-scoped RLS.</strong> Setting <code>app.tenant_id</code> once per connection leaks silently across pooled sessions; it must be <code>SET LOCAL</code> inside the request transaction.</p>
-    <p><strong>Prompt injection through ingested documents.</strong> Third-party medical PDFs are attacker-influenceable input. If the extraction or answer path holds any tool that can write, send or call out, that is a live injection chain. Extraction is structured-output-only with no tools.</p>
+    <div class="kicker">Absence has four meanings and they must never render alike</div>
+    <ul class="pts">
+      <li><b><code>recommended</code></b> — a guideline affirmatively says to do it.</li>
+      <li><b><code>recommended_against</code></b> — a guideline explicitly advises against it. <strong>This is evidence.</strong></li>
+      <li><b><code>not_addressed</code></b> — no current guideline covers this. <strong>This is not evidence of anything</strong>, and it is the common case for multi-morbid patients.</li>
+      <li><b><code>degraded</code></b> — parsing or retrieval failed. We do not know, and this must never be shown as either of the two above.</li>
+    </ul>
+    <p>An unmeasured axis <strong>widens the confidence interval rather than narrowing it</strong>. A system that answers confidently because it retrieved nothing has inverted the meaning of its own silence.</p>
   </div>
 
-  <ul>
-    <li><strong>OIDC and SAML per tenant</strong> — hospitals arrive with Entra ID or Okta and will not create separate accounts. SCIM for provisioning and, more importantly, deprovisioning.</li>
-    <li><strong>Roles:</strong> physician, librarian (curates the tenant corpus), tenant admin, auditor (read-only, no clinical authoring). Enforced at the service boundary, never in the UI.</li>
-    <li><strong>Append-only audit log</strong> in its own table with no update or delete grant — every query, answer, citation, corpus change and access grant, each carrying the lineage quartet. A compliance requirement, and the only thing that makes an answer from six weeks ago explainable.</li>
-    <li><strong>Redis</strong> holds sessions, rate limits, idempotency keys, the query-embedding cache and reranker results. Not final answers — Monograph 08 covers why.</li>
-    <li><strong>No conversational memory store.</strong> The evidence table is already durable and bitemporal; a vector "memory" would be a second, unversioned copy of facts that already have point-in-time semantics.</li>
+  <div class="grid2">
+  <ul class="pts">
+    <li><b>Corroboration counts primary sources, not documents.</b> Three reviews citing one trial are one piece of evidence repeated cheaply — and text similarity returns exactly those copies first. Without <code>primary_source_id</code>, confidence rises with citation volume, which is backwards.</li>
+    <li><b>Every rejection is a free label.</b> Mechanical, immediate, zero cost. This is the cheapest label source the architecture produces.</li>
   </ul>
+  <ul class="pts">
+    <li><b>Insufficient evidence → abstain.</b> A designed output, not an error path. Abstention rate is tracked; a rise on a topic signals a corpus gap and routes to content, not to on-call.</li>
+    <li><b>Conflicting evidence → surface, never resolve.</b> Disagreement between bodies is a real state of medical evidence. Silently picking a winner is the worst behaviour available because it is invisible.</li>
+  </ul>
+  </div>
 </article>
 
 <!-- ===== 07 ===== -->
 <article class="monograph">
   <div class="entry">
-    <span class="no">Monograph 07 &middot; Scale</span>
-    <h2>Cloud, Bottlenecks &amp; Four Planes of Monitoring</h2>
-    <p class="lede">Sub-second reads are a database index, not an achievement. The SLO that matters is that a physician can always distinguish "no guidance exists" from "our pipeline stalled".</p>
+    <span class="no">Monograph 07 &middot; Platform</span>
+    <h2>Core Backend &amp; Multi-Tenancy</h2>
+    <p class="lede">Row-level security handles the relational data. The vector index is the part it does not cover, and that is where isolation is actually decided.</p>
   </div>
 
-  <div class="tbl">
-  <table>
-    <thead><tr><th>Stated</th><th>Derived</th><th>Consequence</th></tr></thead>
-    <tbody>
-      <tr><td>20,000 queries / day</td><td class="num">0.23 QPS mean · 2–4 peak</td><td>Three warm pods. Serving capacity is not a design constraint, and sizing for it is the misdirection.</td></tr>
-      <tr><td>100,000 physicians</td><td class="num">~5,000 weekly active</td><td>A user-table problem, not a load problem.</td></tr>
-      <tr><td>10,000,000 documents</td><td class="num">~300M chunks · ~1.2 TB fp32</td><td><strong>The actual scale problem.</strong> Past every measured pgvector ceiling; sets engine, memory and quantization.</td></tr>
-      <tr><td>Concurrent ingestion pipelines</td><td class="num">~42 h full re-embed</td><td>An embedding upgrade is planned dual-write work, not a background task.</td></tr>
-    </tbody>
-  </table>
-  </div>
+  <figure>
+    <pre class="mermaid">
+flowchart LR
+  Q(["Query<br/>tenant context"])
+  Q --> OP[("Operational data<br/>shared schema + RLS<br/>SET LOCAL per txn")]
+  Q --> SH[("Public literature<br/>ONE shared corpus")]
+  Q --> PV[("Tenant-private<br/>SEPARATE collection")]
+  OP --> AN(["Answer"])
+  SH --> AN
+  PV --> AN
+  B1(["Forgotten WHERE"]) -. blocked by the database .-> OP
+  B2(["Forgotten ANN filter"]) -. NOT blocked — a vector<br/>search is not a row scan .-> PV
+  classDef a fill:#F0E4E2,stroke:#93312B,color:#5C1F1B
+  classDef b fill:#E4EDE8,stroke:#2C5F4F,color:#1B3B31
+  classDef c fill:#F2EBDA,stroke:#8A5D12,color:#553A0B
+  class Q,AN a
+  class OP,SH,PV b
+  class B1,B2 c
+    </pre>
+    <figcaption><b>Figure 12</b> Tenancy split by data class. The right-hand path is the one that matters: RLS is enforced by the database and cannot be forgotten, but an ANN search that omits its tenant filter returns another hospital's protocol with no objection from anywhere. Hence physical separation for private content, and one retrieval function nobody bypasses.</figcaption>
+  </figure>
 
-  <p><strong>Bottlenecks in the order they bite:</strong> PDF and table parsing throughput (slowest, most failure-prone, sets corpus growth rate); filtered-ANN recall at 300M vectors (degrades invisibly — only a golden set catches it); LLM time-to-first-token (dominates p95 once retrieval is tuned); cross-encoder reranking (200–600 ms on CPU, fine at 4 QPS); Postgres connections (async workers plus an async API exhaust the pool long before the CPU — PgBouncer from the start).</p>
-
-  <p>EKS for API and workers, because Docker is already the unit and pipeline stages are long-running in a way Lambda's execution ceiling and cold starts actively fight; serverless is right for the event glue and wrong for the pipeline. Karpenter for nodes, KEDA scaling workers on <strong>queue depth rather than CPU</strong>, since queue depth is what correlates with backlog. <strong>Ingestion runs on spot</strong> — idempotent, checkpointed and restartable makes it close to an ideal spot workload. RDS Multi-AZ, ElastiCache, object storage with versioning and Object Lock, Terraform for everything including the click-ops inventory the takeover audit turns up.</p>
-
-  <h4>Monitoring is four planes, and vendors supply one</h4>
-  <div class="tbl">
-  <table>
-    <thead><tr><th>Plane</th><th>Contents</th><th>Who builds it</th></tr></thead>
-    <tbody>
-      <tr><td>Trace</td><td>Spans, tokens, latency, prompt version — one trace spanning understand → retrieve → rerank → generate → gate.</td><td>Vendor.</td></tr>
-      <tr><td>Data</td><td>Source, language and length mix; arrival gaps; parse-failure rate by format.</td><td>You.</td></tr>
-      <tr><td>Quality</td><td>Gate rejection rate, recall@k on the golden set, abstention rate by topic, calibration.</td><td>You.</td></tr>
-      <tr><td>Cost</td><td>Cost per answered query, cache-hit rate, spend by stage.</td><td>You.</td></tr>
-    </tbody>
-  </table>
-  </div>
-
-  <p><strong>The lineage no vendor supplies is trace → statement → answer → physician verdict six weeks later.</strong> Every statement row carries <code>trace_id</code> and the version quartet, or "the answers got worse in March" is unanswerable. <strong>Freshness honesty:</strong> 100% of responses carry the effective dates of the evidence behind them, so zero staleness is silent.</p>
-
-  <div class="note">
-    <div class="kicker">Continuous ablation, and the degradation order</div>
-    <p>Monthly, pull each component — reranker, query expansion, the corroboration step — and measure both sides. The resulting marginal-value-per-dollar table doubles as the <strong>documented degradation order</strong> when a budget governor or an incident forces shedding. Deciding what to switch off during the incident is how you switch off the wrong thing.</p>
-    <p><strong>Disaster recovery has an asymmetry worth stating.</strong> Postgres restores by PITR in minutes; the index does not, because the expensive work is parsing and embedding rather than storage. RPO and RTO therefore differ by data class — minutes for operational data, and for the index either an accepted multi-day RTO or a warm cross-region replica, depending on what the enterprise contracts actually commit to. A backup is real only once a restore has been performed.</p>
+  <div class="grid2">
+  <ul class="pts">
+    <li><b>Public literature is shared.</b> The guideline is identical for every customer; duplicating ~300M chunks per tenant is indefensible and multiplies every re-embedding job by the customer count.</li>
+    <li><b>Private content is physically separate.</b> Not a filter column. For data whose leakage would end the company, separation beats a predicate one code path can forget.</li>
+    <li><b>One retrieval function applies the tenant predicate</b>, with a test asserting a cross-tenant query returns zero rows.</li>
+    <li><b>PgBouncer in transaction mode breaks session-scoped RLS.</b> <code>app.tenant_id</code> set per connection leaks across pooled sessions — it must be <code>SET LOCAL</code> inside the request transaction.</li>
+  </ul>
+  <ul class="pts">
+    <li><b>OIDC and SAML per tenant.</b> Hospitals arrive with Entra ID or Okta. SCIM for provisioning and, more importantly, deprovisioning.</li>
+    <li><b>Roles:</b> physician, librarian, tenant admin, auditor. Enforced at the service boundary, never in the UI.</li>
+    <li><b>Append-only audit log</b> in its own table with no update or delete grant, carrying the lineage quartet. The only thing that makes an answer from six weeks ago explainable.</li>
+    <li><b>No conversational memory store.</b> The evidence table is already durable and bitemporal; a vector "memory" is a second unversioned copy of facts that already have point-in-time semantics.</li>
+    <li><b>Prompt injection is a real ingestion risk.</b> Third-party PDFs are attacker-influenceable. Extraction is structured-output-only, no tools.</li>
+  </ul>
   </div>
 </article>
 
 <!-- ===== 08 ===== -->
 <article class="monograph">
   <div class="entry">
-    <span class="no">Monograph 08 &middot; Economics</span>
-    <h2>AI Cost &amp; Performance</h2>
-    <p class="lede">Self-hosting is a pricing-floor problem, not a utilisation problem. What eventually forces a dedicated deployment is capacity or compliance — almost never cost.</p>
+    <span class="no">Monograph 08 &middot; Scale</span>
+    <h2>Cloud, Bottlenecks &amp; Four Planes of Monitoring</h2>
+    <p class="lede">Sub-second reads are a database index, not an achievement. The SLO that matters is that a physician can distinguish "no guidance exists" from "our pipeline stalled".</p>
   </div>
 
   <div class="tbl">
   <table>
-    <thead><tr><th>Workload</th><th>Choice</th><th>Why</th><th class="num">Share of spend</th></tr></thead>
+    <thead><tr><th>Stated</th><th>Derived</th><th>Consequence</th></tr></thead>
     <tbody>
-      <tr><td>Query understanding, planning, validation</td><td>Hosted small model, unbatched</td><td>It gates the interactive path, so latency matters. Pricing this tier at a frontier model is where budgets die.</td><td class="num">&lt; 10%</td></tr>
-      <tr><td>Answer generation</td><td>Hosted frontier, streamed</td><td>Correctness-critical and physician-facing.</td><td class="num">~90%</td></tr>
-      <tr><td>Ingestion extraction</td><td>Hosted mid-tier, <strong>batched into 15–30 min windows</strong></td><td>Batching is what makes prompt caching pay: outside the cache TTL every call is a fresh write at ~1.25&times; that no later read amortises.</td><td class="num">one-time + delta</td></tr>
-      <tr><td>Embeddings</td><td>Hosted, batch the backfill</td><td>The 300M-chunk backfill is a scheduled project with a known price, not a running cost.</td><td class="num">one-time</td></tr>
+      <tr><td>20,000 queries / day</td><td class="num">0.23 QPS · 2–4 peak</td><td>Three warm pods. Serving capacity is not a design constraint — sizing for it is the misdirection.</td></tr>
+      <tr><td>100,000 physicians</td><td class="num">~5,000 weekly active</td><td>A user-table problem, not a load problem.</td></tr>
+      <tr><td>10,000,000 documents</td><td class="num">~300M chunks · ~1.2 TB fp32</td><td><strong>The actual scale problem.</strong> Sets engine, memory and quantization.</td></tr>
+      <tr><td>Concurrent ingestion</td><td class="num">~42 h full re-embed</td><td>An embedding upgrade is planned dual-write work, not a background task.</td></tr>
     </tbody>
   </table>
   </div>
 
-  <p>At roughly 8k input and 800 output tokens per answer on a frontier model, 20,000 queries a day is on the order of <strong>$700–800/day, ~$23k/month</strong>, of which generation input context is about two thirds. Every optimisation worth doing early follows from that one fact — and each is also a quality improvement, which is why they come first.</p>
-
-  <ol>
-    <li><strong>Context tightening.</strong> Reranking hard to 6–8 passages rather than 20 halves input cost, cuts TTFT, <em>and</em> improves answers, because a model given twenty passages attends worse than one given eight.</li>
-    <li><strong>Route by stage.</strong> Understanding, planning and validation do not need a frontier model — most calls by count, a small share of spend once routed.</li>
-    <li><strong>Cache the retrieval layer, not the answer.</strong> Query-to-embedding is an exact-match cache with a high hit rate; reranker results likewise.</li>
-    <li><strong>Stream.</strong> Perceived latency is TTFT, not total.</li>
-    <li><strong>Move non-interactive work off the request path</strong> — batch reviews and digests are queued jobs with a notification.</li>
-  </ol>
-
-  <div class="note hold">
-    <div class="kicker">One optimisation I would refuse outright</div>
-    <p><strong>No semantic caching of final answers.</strong> Two clinically distinct questions can sit close enough in embedding space to register as a hit — a paediatric and an adult dosing question, or the same question with and without a contraindication. Serving one for the other is a patient-safety failure disguised as a latency improvement. Exact-match caching on a normalised query, scoped to corpus version and invalidated when it changes, is the safe form and where I would stop.</p>
-  </div>
-
-  <div class="tbl">
-  <table>
-    <thead><tr><th>Deferred</th><th>Why not yet</th><th>Trigger</th></tr></thead>
-    <tbody>
-      <tr><td>Self-hosting inference</td><td>A GPU at <em>100% utilisation</em> is roughly an order of magnitude above hosted per-token rates for the small tier. This is a pricing floor, not a utilisation problem, so "we'll fill the GPU" does not fix it.</td><td><strong>Capacity or compliance</strong> — an air-gapped or data-residency contract, or hosted rate limits becoming the constraint. If it happens, SGLang: RadixAttention is the textbook fit for a fixed prompt prefix with a varying suffix.</td></tr>
-      <tr><td>Fine-tuned domain embeddings</td><td>Real gains on biomedical text, unmeasurable without an eval set and unguided without query logs.</td><td>Golden set exists and recall is the demonstrated bottleneck.</td></tr>
-      <tr><td>Cascade routing, prompt compression</td><td>Meaningful complexity, speculative savings absent production traces.</td><td>Generation spend becoming a material line item.</td></tr>
-      <tr><td>A feature store, a dedicated vector DB on day one, GPU reranking</td><td>Operational surface for problems this system does not yet have.</td><td>Monograph 03's ceiling; several teams authoring transforms; sustained peak past ~20 QPS.</td></tr>
-    </tbody>
-  </table>
+  <div class="grid2">
+  <ul class="pts">
+    <li><b>Bottlenecks in the order they bite:</b> PDF and table parsing throughput; filtered-ANN recall at 300M vectors; LLM time-to-first-token; cross-encoder rerank (200–600 ms CPU); Postgres connections — async workers exhaust the pool long before the CPU.</li>
+    <li><b>EKS, not serverless, for the pipeline.</b> Stages are long-running in a way Lambda's execution ceiling and cold starts fight. Serverless is right for the event glue.</li>
+    <li><b>KEDA on queue depth, not CPU.</b> Queue depth is what correlates with ingestion backlog.</li>
+    <li><b>Ingestion runs on spot.</b> Idempotent, checkpointed, restartable — close to an ideal spot workload.</li>
+  </ul>
+  <ul class="pts">
+    <li><b>Monitoring is four planes</b> — trace (vendor gives you this), plus data, quality and cost (you build these). Quality means gate rejection rate, recall@k, abstention rate by topic, calibration.</li>
+    <li><b>The lineage no vendor supplies</b> is trace → statement → answer → physician verdict six weeks later. Without <code>trace_id</code> on the statement row, "answers got worse in March" is unanswerable.</li>
+    <li><b>Freshness honesty.</b> 100% of responses carry the effective dates of their evidence. Zero silent staleness.</li>
+    <li><b>Continuous ablation.</b> Monthly, pull each component and measure both sides. The marginal-value-per-dollar table doubles as the <em>documented degradation order</em> when a budget governor fires — deciding during the incident is how you shed the wrong thing.</li>
+    <li><b>DR asymmetry.</b> Postgres restores in minutes; the index takes days, because the expensive work is parsing and embedding. RPO/RTO differ by data class, and a backup is real only once a restore has been performed.</li>
+  </ul>
   </div>
 </article>
 
 <!-- ===== 09 ===== -->
 <article class="monograph">
   <div class="entry">
-    <span class="no">Monograph 09 &middot; Takeover</span>
-    <h2>Ownership from the External Partner</h2>
-    <p class="lede">Development cannot stop, so month one buys measurement and changes nothing but security. A battery of tests you only run until it passes is not a battery.</p>
+    <span class="no">Monograph 09 &middot; Economics</span>
+    <h2>AI Cost &amp; Performance</h2>
+    <p class="lede">Self-hosting is a pricing-floor problem, not a utilisation problem. What forces a dedicated deployment is capacity or compliance — almost never cost.</p>
   </div>
 
-  <div class="tbl">
-  <table>
-    <thead><tr><th>Phase</th><th>Work</th><th>Done means</th></tr></thead>
-    <tbody>
-      <tr><td><strong>Days 0–30</strong><br/>Understand and measure</td><td>Read-only access to everything: repos, cloud console, database, dashboards, ticket and incident history. Trace one request end to end and draw the architecture that <em>exists</em>. Add OpenTelemetry tracing and the cost plane — non-breaking, and prerequisite to every later decision. Build the golden sets. Run the kill battery below. Triage security immediately. Shadow the partner's on-call.</td><td>An accurate diagram, a measured latency and cost baseline, three golden sets, and the five risks either fixed or scheduled.</td></tr>
-      <tr><td><strong>Days 31–60</strong><br/>Stabilise, take the keys</td><td>Own CI/CD and deploys first — whoever can deploy owns the system. Characterization tests around retrieval and the API contract, aimed where change is riskiest rather than at a coverage number. Terraform-import the click-ops resources. Fix the month-one risks. Take one feature end to end internally with the partner reviewing; inverting the review direction is the real transfer.</td><td>An internal engineer has deployed to production and rolled back. A restore has actually been performed. Runbooks exist for the top five incidents.</td></tr>
-      <tr><td><strong>Days 61–90</strong><br/>Own it</td><td>Internal team on primary on-call. Execute the highest-value architectural fix, chosen by what the golden set and cost plane show rather than by taste. First cost pass. Architecture document and decision records for inherited choices, including those being kept. DR tested by restoring.</td><td>Primary on-call is internal, the roadmap is set internally, and the partner's contract is scoped work rather than ownership.</td></tr>
-    </tbody>
-  </table>
+  <figure class="pair">
+    <pre class="mermaid">
+pie showData
+  title "Where roughly $23k a month goes"
+  "Generation — input context" : 60
+  "Generation — output" : 30
+  "Entailment validation" : 5
+  "Understanding + planning" : 3
+  "Embedding delta" : 2
+    </pre>
+    <pre class="mermaid">
+flowchart TB
+  Q(["Query"]) --> R{"Stage"}
+  R -- "understand · plan · validate" --> S(["Small hosted model<br/>unbatched, latency matters"])
+  R -- "answer generation" --> F(["Frontier hosted<br/>streamed"])
+  R -- "ingestion extraction" --> B(["Mid-tier, batched<br/>15-30 min windows"])
+  B -. outside cache TTL every call<br/>is a fresh write at 1.25x .-> B
+  classDef a fill:#F0E4E2,stroke:#93312B,color:#5C1F1B
+  classDef b fill:#E4EDE8,stroke:#2C5F4F,color:#1B3B31
+  classDef c fill:#F2EBDA,stroke:#8A5D12,color:#553A0B
+  class Q a
+  class R c
+  class S,F,B b
+    </pre>
+    <figcaption><b>Figures 13 &amp; 14</b> Generation is ~90% of the bill and its input context is about two thirds of that, so context tightening is the single highest-leverage change — and it also improves answers. Batching ingestion into windows is what makes prompt caching pay: outside the TTL every call is a fresh cache <em>write</em> that no later read amortises.</figcaption>
+  </figure>
+
+  <div class="grid2">
+  <ul class="pts">
+    <li><b>1 · Tighten context.</b> Rerank hard to 6–8 passages rather than 20. Halves input cost, cuts TTFT, and improves quality — a model given twenty passages attends worse than one given eight.</li>
+    <li><b>2 · Route by stage.</b> Understanding, planning and validation do not need a frontier model. Most calls by count, a small share of spend.</li>
+    <li><b>3 · Cache retrieval, not answers.</b> Query-to-embedding and reranker results are exact-match and safe.</li>
+    <li><b>4 · Stream.</b> Perceived latency is TTFT, not total.</li>
+    <li><b>5 · Move non-interactive work off the request path.</b> Batch reviews are queued jobs with a notification.</li>
+  </ul>
+  <ul class="pts">
+    <li><b>Deferred — self-hosting.</b> A GPU at <em>100% utilisation</em> is roughly an order of magnitude above hosted per-token rates for the small tier. "We'll fill the GPU" does not fix a pricing floor. Trigger: an air-gapped or residency contract, or hosted rate limits becoming the constraint.</li>
+    <li><b>Deferred — fine-tuned embeddings.</b> Unmeasurable without an eval set. Trigger: golden set exists and recall is the demonstrated bottleneck.</li>
+    <li><b>Deferred — cascade routing, prompt compression, GPU reranking.</b> Speculative without production traces; CPU rerank is comfortable to ~20 QPS.</li>
+  </ul>
   </div>
 
-  <div class="note">
-    <div class="kicker">The golden set is three sets, and the cheapest one matters most</div>
-    <p><strong>Gold-A — grounding:</strong> does the statement reflect its cited passage? Needs <em>no</em> clinical knowledge, the gate adjudicates much of it mechanically, and it is where most real defects live. <strong>Gold-B — retrieval:</strong> was the right evidence found at all? <strong>Gold-C — clinical correctness:</strong> needs physicians, stays small, and is a <em>falsification</em> set rather than a training set — a couple of hundred cases is enough to reject a change, never enough to fit one. Two ordering rules are load-bearing: <strong>dedup before splitting</strong> (or the same guideline lands in both halves), and <strong>split by time</strong>.</p>
-    <p><strong>What may learn, and what never may.</strong> Retrieval weighting, query expansion, the alias table and calibration may all be tuned. <strong>The grounding gate, the two clocks and the abstention threshold never learn</strong> — a referee that learns can learn to pass what it should fail, and then every metric improves while the system gets worse.</p>
-  </div>
-
-  <h4>Five areas audited first</h4>
-  <ol class="risks">
-    <li><b>Tenant isolation and PHI</b> Is the vector search actually filtered by tenant or only the SQL? Is RLS enabled, and does connection pooling defeat it? Does any log, trace or prompt carry PHI? Is every third-party processor covered by a BAA? One cross-tenant leak is existential.</li>
-    <li><b>Is there a real grounding check, and can it fail?</b> The specific thing to look for is a verifier that cannot return false — a guard short-circuited to <code>True</code>, a threshold set to zero, a check wrapped in a bare <code>except</code>. This is not hypothetical; it is the most common way a safety control is present in the code, cited in the docs, and absent in effect.</li>
-    <li><b>Durability and the rebuild path</b> Are raw sources retained immutably, and can the index be rebuilt from them? Has anyone tried? If the vector store holds the only parsed copy, that is a company-ending single point no backup schedule addresses.</li>
-    <li><b>Retrieval and answer quality — the silent one</b> Most likely there is no eval set, so quality is unknown rather than good. I would read the actual retrieved passages for fifty real queries. Least likely to be on the partner's own list.</li>
-    <li><b>Secrets, IAM, deploy and rollback</b> Credentials in the repository, over-broad roles, public endpoints. And: can we deploy without the partner, is there a rollback, are migrations reversible? If deployment runs through a person at another company, ownership has not transferred whatever the contract says.</li>
-  </ol>
-
-  <div class="tbl">
-  <table>
-    <thead><tr><th>Handover area</th><th>Asked for explicitly</th></tr></thead>
-    <tbody>
-      <tr><td>Cloud</td><td>Organisation admin, full resource inventory, cost by service, Terraform state, and an honest list of anything created by hand.</td></tr>
-      <tr><td>Code</td><td>Every repository, branching and release process, CI configuration, secrets inventory, dependency and licence manifest.</td></tr>
-      <tr><td>Data</td><td>Schema and migration history, data dictionary, retention policy, and a <strong>live demonstrated restore</strong> rather than a backup policy document.</td></tr>
-      <tr><td>AI</td><td>All prompts with version history, model selections and their reasoning, embedding model and chunking parameters, <strong>every evaluation ever run including the ones that failed</strong>, vendor accounts and signed BAAs.</td></tr>
-      <tr><td>Operations</td><td>Architecture diagrams, runbooks, on-call history, postmortems, and the known-issues list with current workarounds — usually the most valuable and least written down.</td></tr>
-      <tr><td>People</td><td>Two named engineers for a fixed advisory window, a scheduled KT session per subsystem, and a written record of each.</td></tr>
-    </tbody>
-  </table>
+  <div class="note hold">
+    <div class="kicker">One optimisation I would refuse outright</div>
+    <p><strong>No semantic caching of final answers.</strong> Two clinically distinct questions can sit close enough in embedding space to register as a hit — a paediatric and an adult dosing question, or the same question with and without a contraindication. Serving one for the other is a patient-safety failure disguised as a latency improvement. Exact-match on a normalised query, scoped to corpus version, is the safe form and where I would stop.</p>
   </div>
 </article>
 
 <!-- ===== 10 ===== -->
 <article class="monograph">
   <div class="entry">
-    <span class="no">Monograph 10 &middot; Ownership</span>
+    <span class="no">Monograph 10 &middot; Takeover</span>
+    <h2>Ownership from the External Partner</h2>
+    <p class="lede">Development cannot stop, so month one buys measurement and changes nothing but security.</p>
+  </div>
+
+  <figure class="tall">
+    <pre class="mermaid">
+timeline
+  title Ninety days to internal ownership
+  Days 0-30 — measure : Read-only access to everything : Trace one request, draw what exists : Add tracing and the cost plane : Build the three golden sets : Security triage : Shadow the partner on-call
+  Days 31-60 — take the keys : Own CI/CD and deploys first : Characterization tests on retrieval : Terraform-import the click-ops : Fix the month-one risks : One feature end to end internally
+  Days 61-90 — own it : Primary on-call internal : Highest-value architectural fix : First cost pass : ADRs for inherited choices : DR tested by restoring
+    </pre>
+    <figcaption><b>Figure 15</b> The ordering is deliberate. Tracing goes in before anything changes, because a decision made without a baseline is a guess. Owning deploys precedes owning code — whoever can ship owns the system, whatever the contract says.</figcaption>
+  </figure>
+
+  <div class="note">
+    <div class="kicker">The golden set is three sets, and the cheapest matters most</div>
+    <ul class="pts">
+      <li><b>Gold-A — grounding.</b> Does the statement reflect its cited passage? Needs <em>no</em> clinical knowledge, the gate adjudicates much of it mechanically, and most real defects live here.</li>
+      <li><b>Gold-B — retrieval.</b> Was the right evidence found at all?</li>
+      <li><b>Gold-C — clinical correctness.</b> Needs physicians, stays small, and is a <em>falsification</em> set — enough to reject a change, never enough to fit one.</li>
+      <li><b>Two ordering rules:</b> dedup before splitting, or the same guideline lands in both halves; and split by time.</li>
+      <li><b>What never learns:</b> the gate, the two clocks, the abstention threshold. A referee that learns can learn to pass what it should fail, and then every metric improves while the system gets worse.</li>
+    </ul>
+  </div>
+
+  <h4>Five areas audited first</h4>
+  <ol class="risks">
+    <li><b>Tenant isolation and PHI</b> Is the vector search filtered by tenant or only the SQL? Is RLS on, and does pooling defeat it? Does any log, trace or prompt carry PHI? Is every processor covered by a BAA?</li>
+    <li><b>Is there a grounding check, and can it fail?</b> Look specifically for a verifier that cannot return false — a guard short-circuited to <code>True</code>, a threshold at zero, a check inside a bare <code>except</code>. The most common way a safety control is present in code, cited in docs, and absent in effect.</li>
+    <li><b>Durability and the rebuild path</b> Are raw sources retained immutably, can the index be rebuilt, has anyone tried? If the vector store holds the only parsed copy, that is a company-ending single point no backup schedule addresses.</li>
+    <li><b>Retrieval quality — the silent risk</b> Most likely there is no eval set, so quality is unknown rather than good. Read the actual retrieved passages for fifty real queries.</li>
+    <li><b>Secrets, IAM, deploy and rollback</b> Credentials in the repo, over-broad roles, public endpoints. And can we deploy without the partner, is there a rollback, are migrations reversible?</li>
+  </ol>
+
+  <div class="tbl">
+  <table>
+    <thead><tr><th>Handover area</th><th>Asked for explicitly</th></tr></thead>
+    <tbody>
+      <tr><td>Cloud</td><td>Organisation admin, resource inventory, cost by service, Terraform state, and an honest list of anything created by hand.</td></tr>
+      <tr><td>Code</td><td>Every repository, release process, CI config, secrets inventory, dependency and licence manifest.</td></tr>
+      <tr><td>Data</td><td>Schema and migration history, data dictionary, retention policy, and a <strong>live demonstrated restore</strong> — not a policy document.</td></tr>
+      <tr><td>AI</td><td>Prompts with version history, model choices and why, embedding and chunking parameters, <strong>every evaluation ever run including the failures</strong>, vendor accounts and BAAs.</td></tr>
+      <tr><td>Operations</td><td>Diagrams, runbooks, on-call history, postmortems, and the known-issues list with workarounds — the most valuable and least written down.</td></tr>
+      <tr><td>People</td><td>Two named engineers for a fixed advisory window, a KT session per subsystem, and a written record of each.</td></tr>
+    </tbody>
+  </table>
+  </div>
+</article>
+
+<!-- ===== 11 ===== -->
+<article class="monograph">
+  <div class="entry">
+    <span class="no">Monograph 11 &middot; Ownership</span>
     <h2>My Scope, Experience &amp; Open Decisions</h2>
     <p class="lede">Graded the way the platform grades its own evidence. The honest shape is that my gaps are domain gaps, not platform gaps.</p>
   </div>
@@ -653,11 +934,11 @@ flowchart TB
   <table>
     <thead><tr><th>Role</th><th>Owns</th></tr></thead>
     <tbody>
-      <tr><td><strong>Me</strong><br/>Senior Backend &amp; Platform</td><td>Service and API architecture; the Postgres model including the bitemporal and provenance schema; the retrieval pipeline end to end; ingestion orchestration; the grounding gate; multi-tenancy, authn, RBAC and audit; caching and async infrastructure; cost and latency budgets; and the integration of every AI component into the product. Plus the takeover.</td></tr>
+      <tr><td><strong>Me</strong><br/>Senior Backend &amp; Platform</td><td>Service and API architecture; the Postgres model including the bitemporal and provenance schema; retrieval end to end; ingestion orchestration; the grounding gate; multi-tenancy, authn, RBAC and audit; caching and async infrastructure; cost and latency budgets; and the integration of every AI component into the product. Plus the takeover.</td></tr>
       <tr><td>AI / ML</td><td>Embedding and reranker selection and fine-tuning, eval methodology and golden-set curation with clinicians, prompt versioning, quality regressions, entity linking to SNOMED and RxNorm.</td></tr>
-      <tr><td>Frontend</td><td>Physician workflow, citation rendering and source deep-links, streaming, and the presentation of abstention and conflict — the four observation statuses must be visually distinct, which is a design problem as much as a backend one.</td></tr>
-      <tr><td>DevOps / SRE</td><td>Cluster operations, Terraform, CI/CD, monitoring infrastructure, on-call, DR drills. In an early team I would own this and hand it over as the team grows.</td></tr>
-      <tr><td>Clinical / Medical affairs</td><td>Trusted sources, evidence grading policy, sign-off on answer format, and the abstention threshold. Clinical decisions, which engineering should not be making.</td></tr>
+      <tr><td>Frontend</td><td>Physician workflow, citation deep-links, streaming, and the presentation of abstention and conflict — the four observation statuses must be visually distinct, which is a design problem as much as a backend one.</td></tr>
+      <tr><td>DevOps / SRE</td><td>Cluster operations, Terraform, CI/CD, monitoring infrastructure, on-call, DR drills. In an early team I would own this and hand it over.</td></tr>
+      <tr><td>Clinical / Medical affairs</td><td>Trusted sources, evidence grading policy, sign-off on answer format, the abstention threshold. Clinical decisions engineering should not be making.</td></tr>
     </tbody>
   </table>
   </div>
@@ -672,11 +953,11 @@ flowchart TB
   </div>
   <div class="bucket">
     <h5><span class="grade c">Class C</span>Understood conceptually, would need to learn</h5>
-    <p>HIPAA and HITRUST programmes and where BAA scope actually binds in practice. Medical ontologies and terminology mapping — UMLS, SNOMED CT, RxNorm, ICD-10 — and biomedical embedding models such as MedCPT and BioBERT. Clinical evidence grading frameworks and the document semantics of guidelines and consensus statements. Formal clinical evaluation methodology with physicians in the loop. Vector index operations beyond roughly 100 million vectors; I have run tens of millions, not hundreds.</p>
+    <p>HIPAA and HITRUST programmes and where BAA scope binds in practice. Medical ontologies and terminology mapping — UMLS, SNOMED CT, RxNorm, ICD-10 — and biomedical embedding models such as MedCPT and BioBERT. Clinical evidence grading frameworks and the document semantics of guidelines. Formal clinical evaluation methodology with physicians in the loop. Vector index operations beyond ~100M vectors; I have run tens of millions, not hundreds.</p>
   </div>
 
   <div class="note">
-    <p><strong>Class C is almost entirely medical domain, not platform engineering.</strong> The infrastructure, retrieval and AI-serving layers of this architecture are work I have done. The clinical semantics on top of them are what I would be learning, and I would want a clinical counterpart from week one rather than guessing at them.</p>
+    <p><strong>Class C is almost entirely medical domain, not platform engineering.</strong> The infrastructure, retrieval and AI-serving layers here are work I have done. The clinical semantics on top of them are what I would be learning, and I would want a clinical counterpart from week one rather than guessing.</p>
   </div>
 
   <h4>Three decisions with no single correct answer</h4>
@@ -684,22 +965,22 @@ flowchart TB
   <div class="decision">
     <h5>1 &middot; pgvector, or a dedicated engine — and when</h5>
     <p>Not <em>whether</em> — the measured ceilings settle that at 300M chunks — but <strong>when to spend the migration</strong>. Staying costs recall degrading invisibly under exactly the multi-filter queries this product issues; moving early costs a second source of truth before there is a corpus needing one.</p>
-    <div class="pick"><b>Position now</b>Start on pgvector — almost certainly what exists, and correct for a pilot corpus — with retrieval behind one interface and recall@20 measured continuously under production filters. Migrate on the measurement, not the calendar. I would rather be six weeks late to OpenSearch with a number than six months early on a hunch.</div>
+    <div class="pick"><b>Position now</b>Start on pgvector, retrieval behind one interface, recall@20 measured continuously under production filters. Migrate on the measurement, not the calendar. I would rather be six weeks late with a number than six months early on a hunch.</div>
   </div>
 
   <div class="decision">
-    <h5>2 &middot; How much of the answer the model is allowed to write</h5>
-    <p>Fully generative reads better and handles the long tail. <strong>Extract-then-compose</strong> — the model emits typed cited statements and code assembles the answer — is auditable, testable and lets the gate check every number, at the cost of a stiffer answer and real work in the composition layer.</p>
-    <div class="pick"><b>Position now</b>Extract-then-compose, because it is the only version where "which evidence produced this sentence" has an answer that is not itself a model output. This is the decision I would most want to revisit with physicians in the room — if the composed answer reads as unusable to a clinician, the constraint has to move, and I would rather learn that in week three than defend it for a year.</div>
+    <h5>2 &middot; How much of the answer the model may write</h5>
+    <p>Fully generative reads better and handles the long tail. <strong>Extract-then-compose</strong> is auditable, testable and lets the gate check every number, at the cost of a stiffer answer and real work in the composition layer.</p>
+    <div class="pick"><b>Position now</b>Extract-then-compose — the only version where "which evidence produced this sentence" has an answer that is not itself a model output. The decision I would most want to revisit with physicians in the room: if the composed answer reads as unusable to a clinician, the constraint has to move, and I would rather learn that in week three than defend it for a year.</div>
   </div>
 
   <div class="decision">
     <h5>3 &middot; Shared corpus, or per-tenant isolation</h5>
-    <p><strong>Shared</strong> costs a fraction of the storage and embedding, one re-embedding job, one quality bar — but every isolation bug is a cross-tenant bug. <strong>Per-tenant</strong> is trivially auditable and easy to sell into a hospital security review, at hundreds of times the index cost and a fleet operation per model upgrade.</p>
-    <div class="pick"><b>Position now</b>Hybrid, split by data class. Public literature is identical for everyone and belongs in one shared corpus; tenant-private protocols go in a physically separate collection, not a filter column. Full physical isolation stays a priced enterprise tier, so the answer to a demanding security review is commercial rather than architectural.</div>
+    <p><strong>Shared</strong> costs a fraction of the storage and embedding, one re-embedding job, one quality bar — but every isolation bug is a cross-tenant bug. <strong>Per-tenant</strong> is trivially auditable and easy to sell into a security review, at hundreds of times the index cost and a fleet operation per model upgrade.</p>
+    <div class="pick"><b>Position now</b>Hybrid, split by data class. Public literature in one shared corpus; tenant-private protocols in a physically separate collection, not a filter column. Full isolation stays a priced enterprise tier, so the answer to a demanding security review is commercial rather than architectural.</div>
   </div>
 
-  <p><strong>And what I would deliberately not build:</strong> streaming infrastructure, a dedicated vector database on day one, a feature store, a fine-tuned extractor, multi-agent debate, conversational memory, or self-hosted inference. Every one has a stated trigger in Monographs 03, 04 and 08. Adopting them earlier buys operational surface to solve problems this system does not have, which is the most common way a small platform team stops shipping.</p>
+  <p><strong>And what I would deliberately not build:</strong> streaming infrastructure, a dedicated vector database on day one, a feature store, a fine-tuned extractor, multi-agent debate, conversational memory, or self-hosted inference. Every one has a stated trigger above. Adopting them earlier buys operational surface for problems this system does not have, which is the most common way a small platform team stops shipping.</p>
 </article>
 
 </main>
@@ -707,7 +988,7 @@ flowchart TB
 <footer><div>
   <span>Rutik Pol</span>
   <span>Technical assignment &middot; Centrix</span>
-  <span>Ten monographs</span>
+  <span>Eleven monographs &middot; fifteen figures</span>
   <span id="buildstamp"></span>
 </div></footer>
 
@@ -715,13 +996,15 @@ flowchart TB
 import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.16.0/dist/mermaid.esm.min.mjs";
 mermaid.initialize({
   startOnLoad: true, theme: "base", securityLevel: "loose",
-  flowchart: { htmlLabels: false, curve: "basis", padding: 12 },
+  flowchart: { htmlLabels: false, curve: "basis", padding: 10 },
   themeVariables: {
     background: "#FBF9F4",
     primaryColor: "#F0E4E2", primaryTextColor: "#191712", primaryBorderColor: "#93312B",
     lineColor: "#7B7566", textColor: "#191712",
-    fontFamily: "Newsreader, Georgia, serif", fontSize: "14px",
-    clusterBkg: "#F4F1E9", clusterBorder: "#CBC4B2"
+    fontFamily: "Newsreader, Georgia, serif", fontSize: "13px",
+    clusterBkg: "#F4F1E9", clusterBorder: "#CBC4B2",
+    pie1: "#93312B", pie2: "#C4645C", pie3: "#2C5F4F", pie4: "#8A5D12", pie5: "#7B7566",
+    pieTitleTextSize: "14px", pieSectionTextSize: "11px", pieLegendTextSize: "11px"
   }
 });
 </script>
@@ -730,9 +1013,8 @@ mermaid.initialize({
 /* GitHub Pages serves HTML with Cache-Control: max-age=600 and that header cannot
    be overridden, so a returning visitor can hold a stale document for ten minutes
    after a deploy. The page therefore checks its own freshness: version.json is
-   fetched with no-store and a mismatch reloads exactly once. sessionStorage keys
-   the guard to the NEW build, so a reload that still serves stale HTML from disk
-   cache cannot become a loop. */
+   fetched with no-store and a mismatch reloads exactly once. sessionStorage is
+   keyed to the NEW build, so a reload still served from disk cache cannot loop. */
 (function () {
   var meta = document.querySelector('meta[name=build]');
   var build = meta ? meta.content : '';
